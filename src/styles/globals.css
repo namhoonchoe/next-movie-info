@@ -4,7 +4,7 @@
 
 @layer components {
   .fit-center {
-    @apply flex flex-col m-0	justify-start items-center w-full absolute left-1/2 -translate-x-1/2 min-h-dvh overflow-y-hidden;
+    @apply flex flex-col m-0	justify-start items-center w-full absolute left-1/2 -translate-x-1/2 min-h-dvh;
   }
 
   .nav-button {
@@ -22,8 +22,29 @@
 
 @layer utilities {
   .box-inner-shadow {
-    box-shadow: 80px -7px 60px 16px rgba(0,0,0,0.8) inset;
-    -webkit-box-shadow: 80px -7px 60px 16px rgba(0,0,0,0.8) inset;
-    -moz-box-shadow: 80px -7px 60px 16px rgba(0,0,0,0.8) inset;
+    box-shadow: 80px -7px 60px 16px rgba(0, 0, 0, 0.8) inset;
+    -webkit-box-shadow: 80px -7px 60px 16px rgba(0, 0, 0, 0.8) inset;
+    -moz-box-shadow: 80px -7px 60px 16px rgba(0, 0, 0, 0.8) inset;
+  }
+
+  .layout-grid {
+    display: grid;
+    grid-template-columns: 224px 1fr;
+    grid-template-areas:
+      "header header"
+      "sidebar main"
+      "sidebar main";
+  }
+
+  .grid-header {
+    grid-area: header;
+  }
+
+  .grid-side-bar {
+    grid-row: sidebar;
+  }
+
+  .grid-main {
+    grid-column: main;
   }
 }

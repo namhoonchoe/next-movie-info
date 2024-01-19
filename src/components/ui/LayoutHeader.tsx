@@ -4,7 +4,7 @@ import SearchIcon from "../svgIcons/SearchIcon";
 
 export default function LayoutHeader() {
   return (
-    <header className="w-full h-16 px-6 py-2 bg-white shadow-[-1px_0px_0_1px_rgba(0,0,0,0.3)] justify-between items-center inline-flex z-10 fixed top-0">
+    <header className="w-full h-16 px-6 py-2 bg-white shadow-[-1px_0px_0_1px_rgba(0,0,0,0.3)] justify-between items-center inline-flex sticky top-0 z-[999] grid-header  ">
       <p className="text-black text-xl font-bold font-['Inter']">로고</p>
       <section className="w-[332px] h-12 px-2 justify-between items-center flex">
         {/*

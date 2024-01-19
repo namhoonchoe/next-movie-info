@@ -7,7 +7,7 @@ import SeriesIcon from "../svgIcons/SeriesIcon";
 
 export default function Sidebar() {
   return (
-    <section className="flex flex-col items-center py-8 px-1.5 shrink-0 gap-4 w-56 h-full shadow-[0px_-1px_0_1px_rgba(0,0,0,0.3)]">
+    <section className="flex flex-col items-center py-8 px-1.5 shrink-0 gap-4 w-56 h-[calc(100vh-64px)] shadow-[0.1px_0px_0px_1px_rgba(0,0,0,0.3)]  sticky top-16 grid-side-bar ">
       <Link href="/">
         <div className="nav-button w-52 gap-x-4 ">
           <HomeIcon />

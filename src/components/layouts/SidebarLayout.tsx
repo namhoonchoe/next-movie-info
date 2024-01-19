@@ -9,16 +9,16 @@ type LayoutProps = {
 
 const SidebarLayout: React.FC<LayoutProps> = ({ children }) => {
   return (
-    <section className="fit-center">
-      <LayoutHeader />
-      <main className="flex flex-row justify-start items-start w-full h-dvh pt-16  ">
+    <div className="fit-center">
+      <section className="layout-grid w-full relative">
+        <LayoutHeader />
         <Sidebar />
-        <section className="flex flex-col justify-start items-center h-full w-[calc(100%-224px)]">
+        <section className="flex flex-col justify-start items-center h-full w-full grid-main ">
           <div className="w-full">{children}</div>
           <Footer />
         </section>
-      </main>
-    </section>
+      </section>
+    </div>
   );
 };
 

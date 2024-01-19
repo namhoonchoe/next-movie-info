@@ -14,7 +14,7 @@ export const movieApi: AxiosInstance = axios.create({
   },
 });
 
-export async function fetcher(url:string) {
+export async function tmdbFetcher(url:string) {
   const {
     data: { results },
   } = await movieApi.get(url);
