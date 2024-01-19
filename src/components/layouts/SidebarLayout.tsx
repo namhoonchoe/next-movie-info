@@ -13,7 +13,7 @@ const SidebarLayout: React.FC<LayoutProps> = ({ children }) => {
       <LayoutHeader />
       <main className="flex flex-row justify-start items-start w-full h-dvh pt-16  ">
         <Sidebar />
-        <section className="flex flex-col justify-start items-center h-full w-[calc(100%-240px)]">
+        <section className="flex flex-col justify-start items-center h-full w-[calc(100%-224px)]">
           <div className="w-full">{children}</div>
           <Footer />
         </section>

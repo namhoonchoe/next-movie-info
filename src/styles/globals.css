@@ -2,11 +2,28 @@
 @tailwind components;
 @tailwind utilities;
 
-
 @layer components {
   .fit-center {
     @apply flex flex-col m-0	justify-start items-center w-full absolute left-1/2 -translate-x-1/2 min-h-dvh overflow-y-hidden;
   }
 
- 
+  .nav-button {
+    @apply flex items-center justify-start px-3 py-2 w-full rounded-full hover:bg-gray-200;
+  }
+
+  .hero-header-container {
+    @apply flex p-0 w-full h-full flex-col lg:flex-row;
+  }
+
+  .hero-header-image {
+    @apply object-left-top object-cover w-1/2 h-full brightness-75;
+  }
+}
+
+@layer utilities {
+  .box-inner-shadow {
+    box-shadow: 80px -7px 60px 16px rgba(0,0,0,0.8) inset;
+    -webkit-box-shadow: 80px -7px 60px 16px rgba(0,0,0,0.8) inset;
+    -moz-box-shadow: 80px -7px 60px 16px rgba(0,0,0,0.8) inset;
+  }
 }
