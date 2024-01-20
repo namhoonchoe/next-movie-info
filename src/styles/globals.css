@@ -18,6 +18,10 @@
   .hero-header-image {
     @apply object-left-top object-cover w-1/2 h-full brightness-75;
   }
+
+  .custom-heading {
+    @apply prose prose-xl prose-slate font-bold mb-8 
+  }
 }
 
 @layer utilities {

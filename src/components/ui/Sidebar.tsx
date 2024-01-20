@@ -11,7 +11,7 @@ export default function Sidebar() {
       <Link href="/">
         <div className="nav-button w-52 gap-x-4 ">
           <HomeIcon />
-          <p>홈</p>
+          <p className=" subpixel-antialiased    font-medium">홈</p>
         </div>
       </Link>
 
@@ -19,24 +19,24 @@ export default function Sidebar() {
         <summary className="collapse-title w-full pl-3 ">
           <div className=" text-sm font-medium flex items-center gap-x-4   ">
             <MovieIcon />
-            <p>영화</p>
+            <p className=" subpixel-antialiased  font-medium">영화</p>
           </div>
         </summary>
 
         <section className="collapse-content flex flex-col justify-start items-start gap-y-3 ">
           <Link href="/movies/now-playing" className="w-full">
             <div className="nav-button">
-              <p>지금 상영중</p>
+              <p className=" subpixel-antialiased   ">현재 상영중</p>
             </div>
           </Link>
           <Link href="/movies/popular" className="w-full">
             <div className="nav-button">
-              <p>인기</p>
+              <p className=" subpixel-antialiased   ">인기</p>
             </div>
           </Link>
           <Link href="/movies/top-rated" className="w-full">
             <div className="nav-button">
-              <p>평가가 좋은</p>
+              <p className=" subpixel-antialiased   ">높은 평점</p>
             </div>
           </Link>
         </section>
@@ -46,14 +46,14 @@ export default function Sidebar() {
         <summary className="collapse-title w-full  pl-3 ">
           <div className=" text-sm font-medium flex items-center gap-x-4 ">
             <SeriesIcon />
-            <p>시리즈</p>
+            <p className=" subpixel-antialiased   ">시리즈</p>
           </div>
         </summary>
 
         <section className="collapse-content flex flex-col justify-start items-start gap-y-3 ">
           <Link href="/series/airing-today" className="w-full">
             <div className="nav-button ">
-              <p>지금 방송중</p>
+              <p>오늘 방영</p>
             </div>
           </Link>
           <Link href="/series/popular" className="w-full">
@@ -63,7 +63,7 @@ export default function Sidebar() {
           </Link>
           <Link href="/series/top-rated" className="w-full">
             <div className="nav-button">
-              <p>평가가 좋은</p>
+              <p>높은 평점</p>
             </div>
           </Link>
         </section>
@@ -72,13 +72,13 @@ export default function Sidebar() {
       <Link href="/discover">
         <div className="nav-button w-52 gap-x-4 ">
           <DiscoverIcon />
-          <p>탐색</p>
+          <p className=" subpixel-antialiased  font-medium">탐색</p>
         </div>
       </Link>
       <Link href="/inbox">
         <div className="nav-button w-52 gap-x-4 ">
           <InboxIcon />
-          <p>보관함</p>
+          <p className=" subpixel-antialiased  font-medium">보관함</p>
         </div>
       </Link>
     </section>

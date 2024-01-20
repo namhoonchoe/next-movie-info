@@ -1,8 +1,8 @@
 /* eslint-disable @next/next/no-img-element */
 import { movieApi } from "@/libs/api";
-import { fullSizeUrl } from "@/utils/constants";
 import { Carousel } from "flowbite-react";
 import useSWR from "swr";
+import HeroHeaderItem from "../ui/HeroHeaderItem";
 
 async function tmdbFetcher(url: string) {
   const {
@@ -42,98 +42,96 @@ const HomePage: React.FC = () => {
   });
 
   return (
-    <main className="w-full min-h-dvh	bg-red-500 flex flex-col items-center justify-start">
+    <div className="w-full min-h-100vh flex flex-col items-center justify-start">
       <header className="w-full h-[26rem]">
         {/*Styling direct children (*-{modifier}) */}
         <Carousel slide={false} className="*:rounded-none">
-          <section className="hero h-full ">
-            <div className="hero-header-container  bg-black">
-              <section className="w-1/2 h-full ">
-                <h1 className="text-5xl font-bold">Box Office News!</h1>
-                <p className="py-6">
-                  Provident cupiditate voluptatem et in. Quaerat fugiat ut
-                  assumenda excepturi exercitationem quasi. In deleniti eaque
-                  aut repudiandae et a id nisi.
-                </p>
-                <button className="btn btn-primary">Get Started</button>
-              </section>
-              {tmData && tmData.length > 0 && (
-                <div
-                  className="bg-left-top bg-cover w-1/2 h-full brightness-75 box-inner-shadow"
-                  style={{
-                    backgroundImage: `url(${fullSizeUrl}${tmData[0].backdrop_path})`,
-                  }}
-                />
-              )}
-            </div>
-          </section>
-          <section className="hero h-full  bg-black">
-            <div className="hero-header-container">
-              <section className="w-1/2 h-full ">
-                <h1 className="text-5xl font-bold">Box Office News!</h1>
-                <p className="py-6">
-                  Provident cupiditate voluptatem et in. Quaerat fugiat ut
-                  assumenda excepturi exercitationem quasi. In deleniti eaque
-                  aut repudiandae et a id nisi.
-                </p>
-                <button className="btn btn-primary">Get Started</button>
-              </section>
-              {tsData && tsData.length > 0 && (
-                <div
-                  className="bg-left-top bg-cover w-1/2 h-full brightness-75 box-inner-shadow"
-                  style={{
-                    backgroundImage: `url(${fullSizeUrl}${tsData[0].backdrop_path})`,
-                  }}
-                />
-              )}
-            </div>
-          </section>
-          <section className="hero h-full ">
-            <div className="hero-header-container  bg-black">
-              <section className="w-1/2 h-full ">
-                <h1 className="text-5xl font-bold">Box Office News!</h1>
-                <p className="py-6">
-                  Provident cupiditate voluptatem et in. Quaerat fugiat ut
-                  assumenda excepturi exercitationem quasi. In deleniti eaque
-                  aut repudiandae et a id nisi.
-                </p>
-                <button className="btn btn-primary">Get Started</button>
-              </section>
-              {umData && umData.length > 0 && (
-                <div
-                  className="bg-left-top bg-cover w-1/2 h-full brightness-75 box-inner-shadow"
-                  style={{
-                    backgroundImage: `url(${fullSizeUrl}${umData[0].backdrop_path})`,
-                  }}
-                />
-              )}
-            </div>
-          </section>
-          <section className="hero h-full  bg-black">
-            <div className="hero-header-container">
-              <section className="w-1/2 h-full ">
-                <h1 className="text-5xl font-bold">Box Office News!</h1>
-                <p className="py-6">
-                  Provident cupiditate voluptatem et in. Quaerat fugiat ut
-                  assumenda excepturi exercitationem quasi. In deleniti eaque
-                  aut repudiandae et a id nisi.
-                </p>
-                <button className="btn btn-primary">Get Started</button>
-              </section>
-              {oaData && oaData.length > 0 && (
-                <div
-                  className="bg-left-top bg-cover w-1/2 h-full brightness-75 box-inner-shadow"
-                  style={{
-                    backgroundImage: `url(${fullSizeUrl}${oaData[0].backdrop_path})`,
-                  }}
-                />
-              )}
-            </div>
-          </section>
+          <>
+            {tmLoading && <div className="skeleton w-full h-full"></div>}
+            {tmData && (
+              <HeroHeaderItem backdropPath={tmData[0]?.backdrop_path}>
+                <section className="w-1/2 h-full ">
+                  <h1 className="text-5xl font-bold">Box Office News!</h1>
+                  <p className="py-6">
+                    Provident cupiditate voluptatem et in. Quaerat fugiat ut
+                    assumenda excepturi exercitationem quasi. In deleniti eaque
+                    aut repudiandae et a id nisi.
+                  </p>
+                  <button className="btn btn-primary">Get Started</button>
+                </section>
+              </HeroHeaderItem>
+            )}
+          </>
+          <>
+            {tsLoading && <div className="skeleton w-full h-full"></div>}
+            {tsData && (
+              <HeroHeaderItem backdropPath={tsData[0].backdrop_path}>
+                <section className="w-1/2 h-full ">
+                  <h1 className="text-5xl font-bold">Box Office News!</h1>
+                  <p className="py-6">
+                    Provident cupiditate voluptatem et in. Quaerat fugiat ut
+                    assumenda excepturi exercitationem quasi. In deleniti eaque
+                    aut repudiandae et a id nisi.
+                  </p>
+                  <button className="btn btn-primary">Get Started</button>
+                </section>
+              </HeroHeaderItem>
+            )}
+          </>
+          <>
+            {tmLoading && <div className="skeleton w-full h-full"></div>}
+            {umData && (
+              <HeroHeaderItem backdropPath={umData[0]?.backdrop_path}>
+                <section className="w-1/2 h-full ">
+                  <h1 className="text-5xl font-bold">Box Office News!</h1>
+                  <p className="py-6">
+                    Provident cupiditate voluptatem et in. Quaerat fugiat ut
+                    assumenda excepturi exercitationem quasi. In deleniti eaque
+                    aut repudiandae et a id nisi.
+                  </p>
+                  <button className="btn btn-primary">Get Started</button>
+                </section>
+              </HeroHeaderItem>
+            )}
+            {umLoading && <div className="skeleton w-full h-full"></div>}
+          </>
+          <>
+            {oaData && (
+              <HeroHeaderItem backdropPath={oaData[0]?.backdrop_path}>
+                <section className="w-1/2 h-full ">
+                  <h1 className="text-5xl font-bold">Box Office News!</h1>
+                  <p className="py-6">
+                    Provident cupiditate voluptatem et in. Quaerat fugiat ut
+                    assumenda excepturi exercitationem quasi. In deleniti eaque
+                    aut repudiandae et a id nisi.
+                  </p>
+                  <button className="btn btn-primary">Get Started</button>
+                </section>
+              </HeroHeaderItem>
+            )}
+            {tmLoading && <div className="skeleton w-full h-full"></div>}
+          </>
         </Carousel>
       </header>
-      <section></section>
-    </main>
+      <main className="w-[72rem] flex flex-col items-start justify-center gap-16 my-12">
+        <section className="flex flex-col justify-center items-start w-full">
+          <p className="custom-heading">지금 뜨는 영화</p>
+          <div className="w-full h-96 border"></div>
+        </section>
+        <section className="flex flex-col justify-center items-start w-full">
+          <p className="custom-heading">지금 뜨는 시리즈</p>
+          <div className="w-full h-96 border"></div>
+        </section>
+        <section className="flex flex-col justify-center items-start w-full">
+          <p className="custom-heading">개봉예정 영화</p>
+          <div className="w-full h-96 border"></div>
+        </section>
+        <section className="flex flex-col justify-center items-start w-full">
+          <p className="custom-heading">방영 중인 TV 프로그램</p>
+          <div className="w-full h-96 border"></div>
+        </section>
+      </main>
+    </div>
   );
 };
 
