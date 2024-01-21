@@ -66,7 +66,7 @@ const HomePage: React.FC = () => {
           <>
             {tsLoading && <div className="skeleton w-full h-full"></div>}
             {tsData && (
-              <HeroHeaderItem backdropPath={tsData[0].backdrop_path}>
+              <HeroHeaderItem backdropPath={tsData[0]?.backdrop_path}>
                 <section className="w-1/2 h-full ">
                   <h1 className="text-5xl font-bold">Box Office News!</h1>
                   <p className="py-6">
