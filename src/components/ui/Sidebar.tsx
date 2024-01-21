@@ -11,7 +11,7 @@ export default function Sidebar() {
       <Link href="/">
         <div className="nav-button w-52 gap-x-4 ">
           <HomeIcon />
-          <p className=" subpixel-antialiased    font-medium">홈</p>
+          <p className=" subpixel-antialiased  font-medium">홈</p>
         </div>
       </Link>
 
