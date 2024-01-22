@@ -43,7 +43,7 @@ const HomePage: React.FC = () => {
   });
 
   return (
-    <div className="w-full min-h-100vh flex flex-col items-center justify-start">
+    <div className="w-full min-h-screen flex flex-col items-center justify-start">
       <header className="w-full h-[26rem]">
         {/*Styling direct children (*-{modifier}) */}
         <Carousel slide={false} className="*:rounded-none">

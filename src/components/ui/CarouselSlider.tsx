@@ -1,7 +1,8 @@
 /* eslint-disable @next/next/no-img-element */
-import { imageDefaultUrl } from "@/utils/constants";
+
 import { Carousel } from "flowbite-react";
 import React from "react";
+import ImageCard from "./ImageCard";
 
 type CarouselProps = {
   dataList: Array<any>;
@@ -22,7 +23,6 @@ const CarouselSlider: React.FC<CarouselProps> = ({ dataList, isLoading }) => {
     for (let i = 0; i < array?.length; i += divide) {
       result.push(array.slice(i, i + divide));
     }
-    console.log(result);
     return result;
   }
 
@@ -41,13 +41,11 @@ const CarouselSlider: React.FC<CarouselProps> = ({ dataList, isLoading }) => {
             key={index}
           >
             {array.map((item) => (
-              <div className="w-44 aespect-[27/40] rounded-md" key={item.id}>
-                <img
-                  src={`${imageDefaultUrl}/${item.poster_path}`}
-                  alt={item.title}
-                  className="w-full h-full overflow-hidden object-cover object-center"
-                />
-              </div>
+              <ImageCard
+                posterPath={item.poster_path}
+                title={item.title}
+                key={item.id}
+              />
             ))}
           </section>
         ))}
