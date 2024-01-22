@@ -1,4 +1,4 @@
-import BreadCrumbs from "@/components/ui/BreadCrumbs";
+import SubPagelayout from "@/components/layouts/SubPagelayout";
 import ImageCard from "@/components/ui/ImageCard";
 import { movieApi } from "@/libs/api";
 import useSWR from "swr";
@@ -15,22 +15,14 @@ export default function NowplayingMoviePage() {
     revalidateOnFocus: false,
   });
   return (
-    <div className="w-[72rem] mb-32 min-h-screen flex flex-col items-start justify-start  gap-y-12 ">
-      <BreadCrumbs />
-
-      {isLoading ? (
-        <div className="skeleton w-full h-64"></div>
-      ) : (
-        <section className="w-full detail-grid justify-items-center gap-y-8 ">
-          {data?.map((movie: any) => (
-            <ImageCard
-              posterPath={movie.poster_path}
-              title={movie.title}
-              key={movie.id}
-            />
-          ))}
-        </section>
-      )}
-    </div>
+    <SubPagelayout isLoading={isLoading} pageTitle={"현재 상영중인 영화"}>
+      {data?.map((movie: any) => (
+        <ImageCard
+          posterPath={movie.poster_path}
+          title={movie.title}
+          key={movie.id}
+        />
+      ))}
+    </SubPagelayout>
   );
 }

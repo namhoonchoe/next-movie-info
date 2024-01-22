@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import { imageDefaultUrl } from "@/utils/constants";
 import React from "react";
 
@@ -8,11 +9,12 @@ type ImageCardProps = {
 
 const ImageCard: React.FC<ImageCardProps> = ({ posterPath, title }) => {
   return (
-    <div className="w-44 aspect-[27/40] rounded-md">
+    <div className="w-44 aspect-[27/40] rounded-md overflow-hidden hover:brightness-75">
       {posterPath ? (
         <img
           src={`${imageDefaultUrl}/${posterPath}`}
           alt={title}
+          
           className="w-full h-full overflow-hidden object-cover object-center"
         />
       ) : (
