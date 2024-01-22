@@ -26,9 +26,9 @@
 
 @layer utilities {
   .box-inner-shadow {
-    box-shadow: 80px -7px 60px 16px rgba(0, 0, 0, 0.8) inset;
-    -webkit-box-shadow: 80px -7px 60px 16px rgba(0, 0, 0, 0.8) inset;
-    -moz-box-shadow: 80px -7px 60px 16px rgba(0, 0, 0, 0.8) inset;
+    box-shadow: 80px -7px 60px 16px rgba(0, 0, 0, 1) inset;
+    -webkit-box-shadow: 80px -7px 60px 16px rgba(0, 0, 0, 1) inset;
+    -moz-box-shadow: 80px -7px 60px 16px rgba(0, 0, 0, 1) inset;
   }
 
   .layout-grid {

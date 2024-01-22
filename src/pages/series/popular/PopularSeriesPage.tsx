@@ -1,6 +1,7 @@
 import SubPagelayout from "@/components/layouts/SubPagelayout";
 import ImageCard from "@/components/ui/ImageCard";
 import { movieApi } from "@/libs/api";
+import Link from "next/link";
 import useSWR from "swr";
 
 async function tmdbFetcher(url: string) {
@@ -17,12 +18,10 @@ export default function PopularSeriesPage() {
   return (
     <SubPagelayout isLoading={isLoading} pageTitle={"인기있는 프로그램"}>
       {data?.map((movie: any) => (
-        <ImageCard
-          posterPath={movie.poster_path}
-          title={movie.title}
-          key={movie.id}
-        />
+        <Link href={`/series/${movie.id}`} key={movie.id}>
+          <ImageCard posterPath={movie.poster_path} title={movie.title} />
+        </Link>
       ))}
     </SubPagelayout>
-  )
+  );
 }
