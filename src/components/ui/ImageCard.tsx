@@ -1,7 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
-import useImageLoad from "@/hooks/useImageLoad";
 import { imageDefaultUrl } from "@/utils/constants";
-import React from "react";
+import React, { useState } from "react";
 
 type ImageCardProps = {
   posterPath: string;
@@ -9,10 +8,10 @@ type ImageCardProps = {
 };
 
 const ImageCard: React.FC<ImageCardProps> = ({ posterPath, title }) => {
-  const { setIsImageLoading, showSkeleton } = useImageLoad();
+  const [isImageLoading, setIsImageLoading] = useState<boolean>(true)
 
   return (
-    <div className="w-44 aspect-[27/40] rounded-md overflow-hidden hover:brightness-75">
+    <div className="w-44 aspect-[27/40] rounded-md overflow-hidden hover:brightness-75 bg-slate-200">
       {posterPath ? (
         <img
           src={`${imageDefaultUrl}/${posterPath}`}
@@ -21,7 +20,7 @@ const ImageCard: React.FC<ImageCardProps> = ({ posterPath, title }) => {
           className="w-full h-full overflow-hidden object-cover object-center"
         />
       ) : (
-        <div className=" w-full h-full flex justify-center items-center bg-slate-400">
+        <div className=" w-full h-full flex justify-center items-center bg-slate-200">
           <svg
             width="36"
             height="36"
@@ -36,7 +35,7 @@ const ImageCard: React.FC<ImageCardProps> = ({ posterPath, title }) => {
           </svg>
         </div>
       )}
-      {showSkeleton && <div className=" w-full h-full skeleton z-20"></div>}
+      {isImageLoading && <div className=" w-full h-full animate-pulse  bg-slate-200 z-20"></div>}
     </div>
   );
 };
