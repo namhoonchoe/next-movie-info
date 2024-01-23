@@ -10,7 +10,7 @@ export default function SearchInput() {
 
   const keyDownHandler = (event: KeyboardEvent) => {
     if (event.ctrlKey && event.key === "k") {
-      console.log("You just pressed Control and K!");
+      event.preventDefault();
       openModal();
     }
   };
@@ -24,7 +24,7 @@ export default function SearchInput() {
   });
   return (
     <>
-      <div className="w-[251px] h-12 relative bg-zinc-300 rounded-3xl">
+      <div className="w-[251px] h-12 relative bg-zinc-300 rounded-3xl" onClick={() => openModal()}>
         <div className="w-6 h-6 left-[19px] top-[12px] absolute">
           <SearchIcon />
         </div>

@@ -118,25 +118,41 @@ const HomePage: React.FC = () => {
         <section className="flex flex-col justify-center items-start w-full">
           <p className="custom-heading">지금 뜨는 영화</p>
           <div className="w-full h-80">
-            <CarouselSlider dataList={tmData} isLoading={tmLoading} />
+            <CarouselSlider
+              dataList={tmData}
+              isLoading={tmLoading}
+              dlPrefix={"/movies"}
+            />
           </div>
         </section>
         <section className="flex flex-col justify-center items-start w-full">
           <p className="custom-heading">지금 뜨는 시리즈</p>
           <div className="w-full h-80  ">
-            <CarouselSlider dataList={tsData} isLoading={tsLoading} />
+            <CarouselSlider
+              dataList={tsData}
+              isLoading={tsLoading}
+              dlPrefix={"/series"}
+            />
           </div>
         </section>
         <section className="flex flex-col justify-center items-start w-full">
           <p className="custom-heading">개봉예정 영화</p>
           <div className="w-full h-80  ">
-            <CarouselSlider dataList={umData} isLoading={umLoading} />
+            <CarouselSlider
+              dataList={umData}
+              isLoading={umLoading}
+              dlPrefix={"/movies"}
+            />
           </div>
         </section>
         <section className="flex flex-col justify-center items-start w-full">
           <p className="custom-heading">방영 중인 TV 프로그램</p>
           <div className="w-full h-80  ">
-            <CarouselSlider dataList={oaData} isLoading={oaLoading} />
+            <CarouselSlider
+              dataList={oaData}
+              isLoading={oaLoading}
+              dlPrefix={"/series"}
+            />
           </div>
         </section>
       </main>

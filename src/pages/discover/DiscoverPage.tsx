@@ -1,5 +1,6 @@
 import BreadCrumbs from "@/components/ui/BreadCrumbs";
 import { movieApi } from "@/libs/api";
+import { movieBackgrounds, seriesBackgrounds } from "@/styles/patternCover";
 import useSWR from "swr";
 
 export default function DiscoverPage() {
@@ -29,52 +30,68 @@ export default function DiscoverPage() {
   return (
     <div className="w-[72rem] mb-32 min-h-screen flex flex-col items-start justify-start gap-y-8 ">
       <BreadCrumbs />
-      <p className="custom-heading mb-0">탐색</p>
-      <div className="w-full flex flex-col items-start justify-start ">
-        <p>영화 장르 목록</p>
+
+      <div className="w-full flex flex-col items-start justify-start mb-12 ">
+        <p className="custom-heading">영화 장르 목록</p>
 
         {movieLoading ? (
           <section className="w-full detail-grid justify-items-center gap-y-12">
             {arr.map((_, index) => (
               <div
                 key={index}
-                className="w-44 aspect-square rounded-lg   skeleton "
+                className="w-44 aspect-[15/8] rounded-lg   skeleton "
               ></div>
             ))}
           </section>
         ) : (
           <section className="w-full detail-grid justify-items-center gap-y-12">
-            {movieData.genres.map((genre: any) => (
+            {movieData.genres.map((genre: any, index: number) => (
               <div
-                className="w-44 aspect-square rounded-lg flex items-center justify-center border "
+                className="w-44 aspect-[15/8] rounded-xl p-3 border relative  hover:brightness-50 overflow-hidden"
                 key={genre.id}
               >
-                {genre.name}
+                <div
+                  className="w-full h-full absolute top-0 left-0 -z-10"
+                  style={
+                    index + 1 > 9
+                      ? movieBackgrounds[(index + 1) % 9]
+                      : movieBackgrounds[index]
+                  }
+                ></div>
+                <p className="text-white font-semibold  ">{genre.name}</p>
               </div>
             ))}
           </section>
         )}
       </div>
       <div className="w-full flex flex-col items-start justify-start ">
-        <p>시리즈 장르 목록</p>
+        <p className="custom-heading">시리즈 장르 목록</p>
 
         {tvLoading ? (
           <section className="w-full detail-grid justify-items-center gap-y-12">
             {arr.map((_, index) => (
               <div
                 key={index}
-                className="w-44 aspect-[27/40] rounded-md skeleton "
+                className="w-44 aspect-[15/8] rounded-xl skeleton "
               ></div>
             ))}
           </section>
         ) : (
           <section className="w-full detail-grid justify-items-center gap-y-12">
-            {tvData.genres.map((genre: any) => (
+            {tvData.genres.map((genre: any, index: number) => (
               <div
-                className="w-44 aspect-square rounded-lg flex items-center justify-center border "
+                className="w-44 aspect-[15/8] rounded-xl p-3 border relative  hover:brightness-50 overflow-hidden"
                 key={genre.id}
               >
-                {genre.name}
+                <div
+                  className="w-full h-full absolute top-0 left-0 -z-10"
+                  style={
+                    index + 1 > 9
+                      ? seriesBackgrounds[(index + 1) % 9]
+                      : seriesBackgrounds[index]
+                  }
+                ></div>
+                <p className="text-white font-semibold">{genre.name}</p>
               </div>
             ))}
           </section>

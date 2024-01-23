@@ -1,15 +1,21 @@
 /* eslint-disable @next/next/no-img-element */
 
 import { Carousel } from "flowbite-react";
+import Link from "next/link";
 import React from "react";
 import ImageCard from "./ImageCard";
 
 type CarouselProps = {
   dataList: Array<any>;
   isLoading: Boolean;
+  dlPrefix: string;
 };
 
-const CarouselSlider: React.FC<CarouselProps> = ({ dataList, isLoading }) => {
+const CarouselSlider: React.FC<CarouselProps> = ({
+  dataList,
+  isLoading,
+  dlPrefix,
+}) => {
   let offset = 4;
 
   const totalItems = dataList?.length;
@@ -37,15 +43,13 @@ const CarouselSlider: React.FC<CarouselProps> = ({ dataList, isLoading }) => {
       <Carousel slide={false}>
         {dividedArray.map((array, index) => (
           <section
-            className="w-full h-full bg-red-400  flex justify-center items-center gap-4"
+            className="w-full h-full bg-red-400  flex justify-center items-center gap-4 z-20"
             key={index}
           >
             {array.map((item) => (
-              <ImageCard
-                posterPath={item.poster_path}
-                title={item.title}
-                key={item.id}
-              />
+              <Link key={item.id} href={`${dlPrefix}/${item.id}`}>
+                <ImageCard posterPath={item.poster_path} title={item.title} />
+              </Link>
             ))}
           </section>
         ))}
