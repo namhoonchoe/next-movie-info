@@ -4,17 +4,20 @@ import React from "react";
 type HeroHeaderProps = {
   backdropPath?: string;
   children: React.ReactElement;
-};
+ };
 
 const HeroHeaderItem: React.FC<HeroHeaderProps> = ({
   backdropPath,
   children,
-}) => {
- 
+ }) => {
+  
+
   return (
     <section className="hero h-full ">
       <div className="hero-header-container bg-black">
-        <section className="w-1/2 h-full bg-black ">{children}</section>
+        <section className="w-1/2 h-full bg-black flex items-center justify-start pl-6">
+          {children}
+        </section>
         {backdropPath && (
           <div
             className="bg-left-top bg-cover w-1/2 h-full brightness-75 box-inner-shadow"

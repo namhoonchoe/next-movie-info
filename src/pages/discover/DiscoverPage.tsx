@@ -58,7 +58,9 @@ export default function DiscoverPage() {
                       : movieBackgrounds[index]
                   }
                 ></div>
-                <p className="text-white font-semibold  ">{genre.name}</p>
+                <p className="text-white font-semibold text-sm	 ">
+                  {genre.name}
+                </p>
               </div>
             ))}
           </section>
@@ -91,7 +93,7 @@ export default function DiscoverPage() {
                       : seriesBackgrounds[index]
                   }
                 ></div>
-                <p className="text-white font-semibold">{genre.name}</p>
+                <p className="text-white font-semibold text-sm	">{genre.name}</p>
               </div>
             ))}
           </section>
