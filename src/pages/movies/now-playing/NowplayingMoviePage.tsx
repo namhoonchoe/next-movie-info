@@ -19,7 +19,9 @@ export default function NowplayingMoviePage() {
     <SubPagelayout isLoading={isLoading} pageTitle={"현재 상영중인 영화"}>
       {data?.map((movie: any) => (
         <Link href={`/movies/${movie.id}`} key={movie.id}>
-          <ImageCard posterPath={movie.poster_path} title={movie.title} />
+          <div className="w-44 aspect-[27/40] rounded-md overflow-hidden hover:brightness-75 bg-slate-200">
+            <ImageCard imageUrl={movie.poster_path} title={movie.title} />
+          </div>
         </Link>
       ))}
     </SubPagelayout>

@@ -19,7 +19,9 @@ export default function PopularSeriesPage() {
     <SubPagelayout isLoading={isLoading} pageTitle={"인기있는 프로그램"}>
       {data?.map((movie: any) => (
         <Link href={`/series/${movie.id}`} key={movie.id}>
-          <ImageCard posterPath={movie.poster_path} title={movie.title} />
+         <div className="w-44 aspect-[27/40] rounded-md overflow-hidden hover:brightness-75 bg-slate-200">
+            <ImageCard imageUrl={movie.poster_path} title={movie.title} />
+          </div>
         </Link>
       ))}
     </SubPagelayout>

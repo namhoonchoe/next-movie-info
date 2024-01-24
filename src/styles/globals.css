@@ -56,4 +56,10 @@
     display: grid;
     grid-template-columns:repeat(auto-fill, minmax(11rem, 1fr));
   }
+
+  .credit-grid {
+    display: grid;
+    grid-template-columns:repeat(auto-fill, minmax(20rem, 1fr));
+
+  }
 }

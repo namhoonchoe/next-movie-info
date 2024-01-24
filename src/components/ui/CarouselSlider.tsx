@@ -48,7 +48,9 @@ const CarouselSlider: React.FC<CarouselProps> = ({
           >
             {array.map((item) => (
               <Link key={item.id} href={`${dlPrefix}/${item.id}`}>
-                <ImageCard posterPath={item.poster_path} title={item.title} />
+                <div className="w-44 aspect-[27/40] rounded-md overflow-hidden hover:brightness-75 bg-slate-200">
+                  <ImageCard imageUrl={item.poster_path} title={item.title} />
+                </div>
               </Link>
             ))}
           </section>
