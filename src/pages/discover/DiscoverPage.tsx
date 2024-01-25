@@ -1,6 +1,7 @@
 import BreadCrumbs from "@/components/ui/BreadCrumbs";
 import { movieApi } from "@/libs/api";
 import { movieBackgrounds, seriesBackgrounds } from "@/styles/patternCover";
+import Link from "next/link";
 import useSWR from "swr";
 
 export default function DiscoverPage() {
@@ -46,22 +47,26 @@ export default function DiscoverPage() {
         ) : (
           <section className="w-full detail-grid justify-items-center gap-y-12">
             {movieData.genres.map((genre: any, index: number) => (
-              <div
-                className="w-44 aspect-[15/8] rounded-xl p-3 border relative  hover:brightness-50 overflow-hidden"
+              <Link
+                href={{
+                  pathname: `/discover/movies/${genre.id}`,
+                }}
                 key={genre.id}
               >
-                <div
-                  className="w-full h-full absolute top-0 left-0 -z-10"
-                  style={
-                    index + 1 > 9
-                      ? movieBackgrounds[(index + 1) % 9]
-                      : movieBackgrounds[index]
-                  }
-                ></div>
-                <p className="text-white font-semibold text-sm	 ">
-                  {genre.name}
-                </p>
-              </div>
+                <div className="w-44 aspect-[15/8] rounded-xl p-3 border relative  hover:brightness-50 overflow-hidden">
+                  <div
+                    className="w-full h-full absolute top-0 left-0 -z-10"
+                    style={
+                      index + 1 > 9
+                        ? movieBackgrounds[(index + 1) % 9]
+                        : movieBackgrounds[index]
+                    }
+                  ></div>
+                  <p className="text-white font-semibold text-sm	 ">
+                    {genre.name}
+                  </p>
+                </div>
+              </Link>
             ))}
           </section>
         )}
@@ -81,20 +86,24 @@ export default function DiscoverPage() {
         ) : (
           <section className="w-full detail-grid justify-items-center gap-y-12">
             {tvData.genres.map((genre: any, index: number) => (
-              <div
-                className="w-44 aspect-[15/8] rounded-xl p-3 border relative  hover:brightness-50 overflow-hidden"
+              <Link
+                href={{ pathname:`/discover/series/${genre.id}` }}
                 key={genre.id}
               >
-                <div
-                  className="w-full h-full absolute top-0 left-0 -z-10"
-                  style={
-                    index + 1 > 9
-                      ? seriesBackgrounds[(index + 1) % 9]
-                      : seriesBackgrounds[index]
-                  }
-                ></div>
-                <p className="text-white font-semibold text-sm	">{genre.name}</p>
-              </div>
+                <div className="w-44 aspect-[15/8] rounded-xl p-3 border relative  hover:brightness-50 overflow-hidden">
+                  <div
+                    className="w-full h-full absolute top-0 left-0 -z-10"
+                    style={
+                      index + 1 > 9
+                        ? seriesBackgrounds[(index + 1) % 9]
+                        : seriesBackgrounds[index]
+                    }
+                  ></div>
+                  <p className="text-white font-semibold text-sm">
+                    {genre.name}
+                  </p>
+                </div>
+              </Link>
             ))}
           </section>
         )}

@@ -20,7 +20,7 @@
   }
 
   .custom-heading {
-    @apply prose prose-xl prose-slate font-bold mb-8 
+    @apply prose prose-xl prose-slate font-bold mb-8;
   }
 }
 
@@ -54,12 +54,25 @@
 
   .detail-grid {
     display: grid;
-    grid-template-columns:repeat(auto-fill, minmax(11rem, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(11rem, 1fr));
   }
 
   .credit-grid {
     display: grid;
-    grid-template-columns:repeat(auto-fill, minmax(20rem, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr));
+  }
 
+  .gallary-slider {
+    display: inline-flex;
+    overflow-x: scroll;
+    scroll-behavior: smooth;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+
+  
+  }
+  
+  .gallary-slider::-webkit-scrollbar {
+    display: none;
   }
 }
