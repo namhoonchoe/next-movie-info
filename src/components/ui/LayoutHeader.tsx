@@ -3,9 +3,9 @@ import SearchInput from "./SearchInput";
 
 export default function LayoutHeader() {
   return (
-    <header className="w-full h-16 px-6 py-2 bg-white shadow-[-1px_0px_0_1px_rgba(0,0,0,0.3)] justify-between items-center inline-flex sticky top-0 z-[999] grid-header  ">
+    <header className="w-full h-14 px-6 py-2 bg-white shadow-[-1px_0px_0_1px_rgba(230,230,230,1)] justify-between items-center inline-flex sticky top-0 z-[999] grid-header  ">
       <p className="text-black text-xl font-bold font-['Inter']">로고</p>
-      <section className="w-[332px] h-12 px-2 justify-between items-center flex">
+      <section className="w-[332px] h-10 px-2 justify-between items-center flex">
         {/*
         검색 바
         */}

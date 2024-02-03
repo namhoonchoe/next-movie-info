@@ -20,7 +20,7 @@ export default function AiringTodayPage() {
     <SubPagelayout isLoading={isLoading} pageTitle={"오늘 방영중인 프로그램"}>
       {data?.map((movie: any) => (
         <Link href={`/series/${movie.id}`} key={movie.id}>
-        <div className="w-44 aspect-[27/40] rounded-md overflow-hidden hover:brightness-75 bg-slate-200">
+        <div className="poster-container">
             <ImageCard imageUrl={movie.poster_path} title={movie.title} />
           </div>
         </Link>

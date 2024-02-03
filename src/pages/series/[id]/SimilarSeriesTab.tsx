@@ -37,7 +37,7 @@ export default function SimilarSeriesTab() {
       <section className="w-full detail-grid justify-items-center gap-y-12 ">
         {data?.map((series: any) => (
           <Link href={`/series/${series.id}`} key={series.id}>
-            <div className="w-44 aspect-[27/40] rounded-md overflow-hidden hover:brightness-75 bg-slate-200">
+            <div className="poster-container">
               <ImageCard imageUrl={series.poster_path} title={series.title} />
             </div>
           </Link>

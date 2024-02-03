@@ -1,7 +1,7 @@
 export function getOneDecimalPlaceNumber(target: number) {
-  if (target) {
-    return Number(target.toFixed(1));
-  }
+    const refinedNumber = Number(target.toFixed(2))*10
+    return  Math.floor(refinedNumber) / 10  ;
+  
 }
 
 export function runningTimeConverter(inputNumber: number) {

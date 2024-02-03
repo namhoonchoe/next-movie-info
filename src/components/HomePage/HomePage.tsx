@@ -1,8 +1,13 @@
 /* eslint-disable @next/next/no-img-element */
 import { movieApi } from "@/libs/api";
+import { MovieResult } from "@/types/MovieResult";
+import { TrendingMovie } from "@/types/TrendingMovie";
+import { TrendingSeries } from "@/types/TrendingSeries";
+import { getOneDecimalPlaceNumber } from "@/utils/utilFunctions";
 import { Carousel } from "flowbite-react";
 import useSWR from "swr";
 import CarouselSlider from "../ui/CarouselSlider";
+import HeroBanner from "../ui/HeroBanner";
 import HeroHeaderItem from "../ui/HeroHeaderItem";
 
 async function tmdbFetcher(url: string) {
@@ -17,28 +22,21 @@ const HomePage: React.FC = () => {
     data: tmData,
     error: tmError,
     isLoading: tmLoading,
-  } = useSWR("/trending/movie/week", tmdbFetcher, {
+  } = useSWR<Array<TrendingMovie>>("/trending/movie/week", tmdbFetcher, {
     revalidateOnFocus: false,
   });
   const {
     data: tsData,
     error: tsError,
     isLoading: tsLoading,
-  } = useSWR("/trending/tv/week", tmdbFetcher, {
+  } = useSWR<Array<TrendingSeries>>("/trending/tv/week", tmdbFetcher, {
     revalidateOnFocus: false,
   });
   const {
     data: umData,
     error: umError,
     isLoading: umLoading,
-  } = useSWR("/movie/upcoming", tmdbFetcher, {
-    revalidateOnFocus: false,
-  });
-  const {
-    data: oaData,
-    error: oaError,
-    isLoading: oaLoading,
-  } = useSWR("/tv/on_the_air", tmdbFetcher, {
+  } = useSWR<Array<MovieResult>>("/movie/upcoming", tmdbFetcher, {
     revalidateOnFocus: false,
   });
 
@@ -46,71 +44,65 @@ const HomePage: React.FC = () => {
     <div className="w-full min-h-screen flex flex-col items-center justify-start">
       <header className="w-full h-[26rem]">
         {/*Styling direct children (*-{modifier}) */}
-        <Carousel slide={false} className="*:rounded-none">
+        <Carousel
+          slide={false}
+          className="*:rounded-none"
+          leftControl={<p className="text-white  text-lg">❮</p>}
+          rightControl={<p className="text-white  text-lg">❯</p>}
+        >
           <>
-            {tmLoading && <div className="skeleton w-full h-full"></div>}
+            {tmLoading && (
+              <div className="skeleton rounded-none w-full h-full"></div>
+            )}
             {tmData && (
-              <HeroHeaderItem backdropPath={tmData[0]?.backdrop_path}>
-                <section className="w-1/2 h-full ">
-                  <h1 className="text-5xl font-bold">Box Office News!</h1>
-                  <p className="py-6">
-                    Provident cupiditate voluptatem et in. Quaerat fugiat ut
-                    assumenda excepturi exercitationem quasi. In deleniti eaque
-                    aut repudiandae et a id nisi.
-                  </p>
-                  <button className="btn btn-primary">Get Started</button>
-                </section>
+              <HeroHeaderItem backdropPath={tmData[0].backdrop_path}>
+                <HeroBanner
+                  heading={"지금 뜨는 영화"}
+                  dataTitle={tmData[0].title}
+                  voteAverage={getOneDecimalPlaceNumber(tmData[0].vote_average)}
+                  voteCount={tmData[0].vote_count}
+                  overView={tmData[0].overview}
+                  navigateTo=""
+                />
               </HeroHeaderItem>
             )}
           </>
           <>
-            {tsLoading && <div className="skeleton w-full h-full"></div>}
+            {tsLoading && (
+              <div className="skeleton rounded-none w-full h-full"></div>
+            )}
             {tsData && (
-              <HeroHeaderItem backdropPath={tsData[0]?.backdrop_path}>
-                <section className="w-1/2 h-full ">
-                  <h1 className="text-5xl font-bold">Box Office News!</h1>
-                  <p className="py-6">
-                    Provident cupiditate voluptatem et in. Quaerat fugiat ut
-                    assumenda excepturi exercitationem quasi. In deleniti eaque
-                    aut repudiandae et a id nisi.
-                  </p>
-                  <button className="btn btn-primary">Get Started</button>
-                </section>
+              <HeroHeaderItem backdropPath={tsData[0].backdrop_path}>
+                <HeroBanner
+                  heading={"지금 뜨는 시리즈"}
+                  dataTitle={tsData[0].name}
+                  voteAverage={getOneDecimalPlaceNumber(tsData[0].vote_average)}
+                  voteCount={tsData[0].vote_count}
+                  overView={tsData[0].overview}
+                  navigateTo=""
+                />
               </HeroHeaderItem>
             )}
           </>
           <>
-            {umLoading && <div className="skeleton w-full h-full"></div>}
+            {umLoading && (
+              <div className="skeleton rounded-none w-full h-full"></div>
+            )}
             {umData && (
               <HeroHeaderItem backdropPath={umData[0]?.backdrop_path}>
-                <section className="w-1/2 h-full ">
-                  <h1 className="text-5xl font-bold">Box Office News!</h1>
-                  <p className="py-6">
-                    Provident cupiditate voluptatem et in. Quaerat fugiat ut
-                    assumenda excepturi exercitationem quasi. In deleniti eaque
-                    aut repudiandae et a id nisi.
-                  </p>
-                  <button className="btn btn-primary">Get Started</button>
-                </section>
+                <HeroBanner
+                  heading={"개봉 예정 영화"}
+                  dataTitle={umData[0].title}
+                  voteAverage={getOneDecimalPlaceNumber(umData[0].vote_average)}
+                  voteCount={umData[0].vote_count}
+                  overView={umData[0].overview}
+                  navigateTo=""
+                />
               </HeroHeaderItem>
             )}
-            {umLoading && <div className="skeleton w-full h-full"></div>}
-          </>
-          <>
-            {oaData && (
-              <HeroHeaderItem backdropPath={oaData[0]?.backdrop_path}>
-                <section className="w-1/2 h-full ">
-                  <h1 className="text-5xl font-bold">Box Office News!</h1>
-                  <p className="py-6">
-                    Provident cupiditate voluptatem et in. Quaerat fugiat ut
-                    assumenda excepturi exercitationem quasi. In deleniti eaque
-                    aut repudiandae et a id nisi.
-                  </p>
-                  <button className="btn btn-primary">Get Started</button>
-                </section>
-              </HeroHeaderItem>
+            {umLoading && (
+              <div className="skeleton rounded-none w-full h-full"></div>
             )}
-            {tmLoading && <div className="skeleton w-full h-full"></div>}
           </>
         </Carousel>
       </header>
@@ -118,41 +110,37 @@ const HomePage: React.FC = () => {
         <section className="flex flex-col justify-center items-start w-full">
           <p className="custom-heading">지금 뜨는 영화</p>
           <div className="w-full h-80">
-            <CarouselSlider
-              dataList={tmData}
-              isLoading={tmLoading}
-              dlPrefix={"/movies"}
-            />
+            {tmData && (
+              <CarouselSlider
+                dataList={tmData}
+                isLoading={tmLoading}
+                navigateTo={"/movies"}
+              />
+            )}
           </div>
         </section>
         <section className="flex flex-col justify-center items-start w-full">
           <p className="custom-heading">지금 뜨는 시리즈</p>
           <div className="w-full h-80  ">
-            <CarouselSlider
-              dataList={tsData}
-              isLoading={tsLoading}
-              dlPrefix={"/series"}
-            />
+            {tsData && (
+              <CarouselSlider
+                dataList={tsData}
+                isLoading={tsLoading}
+                navigateTo={"/series"}
+              />
+            )}
           </div>
         </section>
         <section className="flex flex-col justify-center items-start w-full">
           <p className="custom-heading">개봉예정 영화</p>
           <div className="w-full h-80  ">
-            <CarouselSlider
-              dataList={umData}
-              isLoading={umLoading}
-              dlPrefix={"/movies"}
-            />
-          </div>
-        </section>
-        <section className="flex flex-col justify-center items-start w-full">
-          <p className="custom-heading">방영 중인 TV 프로그램</p>
-          <div className="w-full h-80  ">
-            <CarouselSlider
-              dataList={oaData}
-              isLoading={oaLoading}
-              dlPrefix={"/series"}
-            />
+            {umData && (
+              <CarouselSlider
+                dataList={umData}
+                isLoading={umLoading}
+                navigateTo={"/movies"}
+              />
+            )}
           </div>
         </section>
       </main>

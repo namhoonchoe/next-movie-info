@@ -32,10 +32,10 @@ export default function MovieDetailPage() {
   );
 
   return (
-    <div className="w-full min-h-screen flex flex-col items-center justify-start">
+    <div className="w-full min-h-screen flex flex-col items-center justify-start bg-slate-100">
       <header className="w-full h-[26rem]">
         {mdLoading ? (
-          <div className="skeleton w-full h-full" />
+          <div className="skeleton rounded-none w-full h-full" />
         ) : (
           <HeroHeaderItem backdropPath={movieDetail?.backdrop_path}>
             <section className="w-full h-full flex flex-col items-start justify-between py-8 *:text-white ">
@@ -89,8 +89,8 @@ export default function MovieDetailPage() {
           </HeroHeaderItem>
         )}
       </header>
-      <main className="w-[72rem] mb-32 min-h-1/2 flex flex-col items-center justify-center gap-y-12 pt-12">
-        <header className="w-64 h-12 flex items-center justify-center gap-4 rounded-lg border">
+      <main className="w-[72rem] mb-32 min-h-1/2 flex flex-col items-center justify-center gap-y-12 pt-12 bg-slate-100">
+        <header className="w-64 h-12 flex items-center justify-center gap-4 rounded-lg border ">
           <div
             className="flex items-center justify-center"
             onClick={() => setToggleDefault(!toggleDefault)}

@@ -1,3 +1,4 @@
+import { Kbd } from "flowbite-react";
 import { useEffect, useRef } from "react";
 import SearchIcon from "../svgIcons/SearchIcon";
 
@@ -24,9 +25,18 @@ export default function SearchInput() {
   });
   return (
     <>
-      <div className="w-[251px] h-12 relative bg-zinc-300 rounded-3xl" onClick={() => openModal()}>
-        <div className="w-6 h-6 left-[19px] top-[12px] absolute">
+      <div
+        className="w-[251px] flex items-center justify-between h-12 relative bg-slate-200 rounded-3xl px-4"
+        onClick={() => openModal()}
+      >
+        <div className="  flex justify-start items-center gap-1  ">
           <SearchIcon />
+          <p>검색</p>
+        </div>
+        <div className="flex justify-start items-center gap-1 *:text-xs">
+          <Kbd>Ctrl</Kbd>
+
+          <Kbd>K</Kbd>
         </div>
       </div>
       <dialog ref={modalRef} className="modal">

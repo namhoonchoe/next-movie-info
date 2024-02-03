@@ -22,6 +22,14 @@
   .custom-heading {
     @apply prose prose-xl prose-slate font-bold mb-8;
   }
+
+  .poster-container {
+    @apply w-44 aspect-[27/40] rounded-md overflow-hidden shadow-sm hover:brightness-75 bg-slate-200
+  }
+
+  .squared-skeleton {
+    @apply skeleton rounded-none
+  }
 }
 
 @layer utilities {

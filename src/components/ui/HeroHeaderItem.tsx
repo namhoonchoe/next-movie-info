@@ -15,7 +15,7 @@ const HeroHeaderItem: React.FC<HeroHeaderProps> = ({
   return (
     <section className="hero h-full ">
       <div className="hero-header-container bg-black">
-        <section className="w-1/2 h-full bg-black flex items-center justify-start pl-6">
+        <section className="w-1/2 h-full bg-black flex items-center justify-start pt-6 pl-6">
           {children}
         </section>
         {backdropPath && (
