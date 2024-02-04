@@ -64,6 +64,7 @@
 
   .grid-main {
     grid-area: main;
+    
   }
 
   .detail-grid {

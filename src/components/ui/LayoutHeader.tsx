@@ -1,5 +1,5 @@
 import ProfileIcon from "../svgIcons/ProfileIcon";
-import SearchInput from "./SearchInput";
+import SearchBox from "./SearchBox";
 
 export default function LayoutHeader() {
   return (
@@ -9,7 +9,7 @@ export default function LayoutHeader() {
         {/*
         검색 바
         */}
-        <SearchInput />
+        <SearchBox />
         {/**아이콘만 있는것 보다 로그인 버튼 있는게 더 나을듯! */}
         <ProfileIcon />
       </section>

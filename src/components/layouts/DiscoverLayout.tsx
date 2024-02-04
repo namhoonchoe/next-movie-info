@@ -14,7 +14,7 @@ const DiscoverLayout: React.FC<DiscoverPageProps> = ({
   pageTitle,
 }) => {
   return (
-    <div className="w-full max-w-[72rem] my-8   flex flex-col items-start justify-start gap-y-8 ">
+    <div className="w-full max-w-[72rem] my-8 flex flex-col items-start justify-start gap-y-8 min-h-[50vh] ">
       <p className="custom-heading mb-0">{pageTitle}</p>
       {isLoading ? (
         <section className="w-full detail-grid justify-items-center gap-y-12 ">

@@ -1,15 +1,19 @@
 import { Kbd } from "flowbite-react";
 import { useRouter } from "next/router";
 import { useEffect, useRef, useState } from "react";
+import CloseIcon from "../svgIcons/CloseIcon";
 import SearchIcon from "../svgIcons/SearchIcon";
 
-export default function SearchInput() {
+export default function SearchBox() {
   const modalRef = useRef<HTMLDialogElement>(null);
+  const inputRef = useRef(null);
+
   const [keyword, setKeyword] = useState<string>("");
+
   const router = useRouter();
 
   const changeHandler: React.ChangeEventHandler<HTMLInputElement> = (e) => {
-    setKeyword(e.target.value);
+    setKeyword(e.target.value)
   };
 
   const handleReset: React.MouseEventHandler<HTMLButtonElement> = (e) => {
@@ -20,8 +24,8 @@ export default function SearchInput() {
   const submitHandler: React.FormEventHandler<HTMLFormElement> = (e) => {
     e.preventDefault();
     router.push(`/search/${keyword}`);
-    modalRef.current?.close();
     setKeyword("");
+    modalRef.current?.close();
   };
 
   const openModal = () => {
@@ -42,6 +46,7 @@ export default function SearchInput() {
       window.removeEventListener("keydown", keyDownHandler);
     };
   });
+
   return (
     <>
       <div
@@ -61,13 +66,37 @@ export default function SearchInput() {
       <dialog ref={modalRef} className="modal ">
         <div className="modal-box">
           <h3 className="font-bold text-lg">Hello!</h3>
-          <form action="" onSubmit={submitHandler}>
-            <input
-              type="text"
-              placeholder="검색"
-              onChange={changeHandler}
-              className="input input-bordered h-full w-full  px-[19px] "
-            />
+          <form onSubmit={submitHandler} className="form-control relative">
+            {keyword !== "" ? (
+              <>
+                <input
+                  type="text"
+                  defaultValue={keyword}
+                  value={keyword}
+                  required
+                  placeholder="검색"
+                  onChange={changeHandler}
+                  className="input input-bordered h-full w-full px-[19px] "
+                />
+
+                <button
+                  className="z-1 btn btn-circle btn-ghost btn-xs   absolute right-2 top-2"
+                  type="reset"
+                  onClick={handleReset}
+                >
+                  <CloseIcon />
+                </button>
+              </>
+            ) : (
+              <input
+                className="input input-bordered h-full w-full px-[19px] "
+                placeholder="검색"
+                value={keyword}
+                required
+                type="text"
+                onChange={changeHandler}
+              ></input>
+            )}
           </form>
         </div>
         <form method="dialog" className="modal-backdrop">
