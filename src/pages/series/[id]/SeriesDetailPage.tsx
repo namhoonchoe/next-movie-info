@@ -88,7 +88,7 @@ export default function SeriesDetailPage() {
           </HeroHeaderItem>
         )}
       </header>
-      <main className="w-[72rem] mb-32 min-h-1/2 flex flex-col items-center justify-center gap-y-12 pt-12">
+      <main className="w-[72rem]   min-h-1/2 flex flex-col items-center justify-center gap-y-12 pt-12">
         <header className="w-64 h-12 flex items-center justify-center gap-4 rounded-lg border">
           <div
             className="flex items-center justify-center"

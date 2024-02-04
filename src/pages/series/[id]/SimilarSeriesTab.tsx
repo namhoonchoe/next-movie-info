@@ -23,7 +23,7 @@ export default function SimilarSeriesTab() {
   });
 
   return (
-    <section className=" w-full flex flex-col justify-start items-start  mb-16">
+    <section className=" w-full flex flex-col justify-start items-start   ">
      {isLoading ? (
       <section className="w-full detail-grid justify-items-center gap-y-16 ">
         {arr.map((_, index) => (

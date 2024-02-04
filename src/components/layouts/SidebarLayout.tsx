@@ -13,8 +13,8 @@ const SidebarLayout: React.FC<LayoutProps> = ({ children }) => {
       <section className="layout-grid w-full relative">
         <LayoutHeader />
         <Sidebar />
-        <section className="flex flex-col justify-start items-center h-full w-full grid-main ">
-          <div className="w-full flex justify-center">{children}</div>
+        <section className="flex flex-col justify-start items-center h-full grid-main ">
+          {children}
           <Footer />
         </section>
       </section>

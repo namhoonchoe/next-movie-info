@@ -32,7 +32,7 @@ export default function MovieDetailPage() {
   );
 
   return (
-    <div className="w-full min-h-screen flex flex-col items-center justify-start bg-slate-100">
+    <div className="w-full min-h-screen flex flex-col items-center justify-start  ">
       <header className="w-full h-[26rem]">
         {mdLoading ? (
           <div className="skeleton rounded-none w-full h-full" />
@@ -89,7 +89,7 @@ export default function MovieDetailPage() {
           </HeroHeaderItem>
         )}
       </header>
-      <main className="w-[72rem] mb-32 min-h-1/2 flex flex-col items-center justify-center gap-y-12 pt-12 bg-slate-100">
+      <main className="w-[72rem]   min-h-1/2 flex flex-col items-center justify-center gap-y-12 pt-12 ">
         <header className="w-64 h-12 flex items-center justify-center gap-4 rounded-lg border ">
           <div
             className="flex items-center justify-center"

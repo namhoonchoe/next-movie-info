@@ -1,9 +1,28 @@
 import { Kbd } from "flowbite-react";
-import { useEffect, useRef } from "react";
+import { useRouter } from "next/router";
+import { useEffect, useRef, useState } from "react";
 import SearchIcon from "../svgIcons/SearchIcon";
 
 export default function SearchInput() {
   const modalRef = useRef<HTMLDialogElement>(null);
+  const [keyword, setKeyword] = useState<string>("");
+  const router = useRouter();
+
+  const changeHandler: React.ChangeEventHandler<HTMLInputElement> = (e) => {
+    setKeyword(e.target.value);
+  };
+
+  const handleReset: React.MouseEventHandler<HTMLButtonElement> = (e) => {
+    e.preventDefault();
+    setKeyword("");
+  };
+
+  const submitHandler: React.FormEventHandler<HTMLFormElement> = (e) => {
+    e.preventDefault();
+    router.push(`/search/${keyword}`);
+    modalRef.current?.close();
+    setKeyword("");
+  };
 
   const openModal = () => {
     modalRef.current?.showModal();
@@ -39,10 +58,17 @@ export default function SearchInput() {
           <Kbd>K</Kbd>
         </div>
       </div>
-      <dialog ref={modalRef} className="modal">
+      <dialog ref={modalRef} className="modal ">
         <div className="modal-box">
           <h3 className="font-bold text-lg">Hello!</h3>
-          <p className="py-4">Press ESC key or click outside to close</p>
+          <form action="" onSubmit={submitHandler}>
+            <input
+              type="text"
+              placeholder="검색"
+              onChange={changeHandler}
+              className="input input-bordered h-full w-full  px-[19px] "
+            />
+          </form>
         </div>
         <form method="dialog" className="modal-backdrop">
           <button>close</button>
