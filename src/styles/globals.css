@@ -34,9 +34,15 @@
 
 @layer utilities {
   .box-inner-shadow {
-    box-shadow: 80px -7px 60px 16px rgba(0, 0, 0, 1) inset;
-    -webkit-box-shadow: 80px -7px 60px 16px rgba(0, 0, 0, 1) inset;
-    -moz-box-shadow: 80px -7px 60px 16px rgba(0, 0, 0, 1) inset;
+    box-shadow: 80px 7px 60px 16px rgba(0, 0, 0, 1) inset;
+    -webkit-box-shadow: 80px 7px 60px 16px rgba(0, 0, 0, 1) inset;
+    -moz-box-shadow: 80px 7px 60px 16px rgba(0, 0, 0, 1) inset;
+  }
+
+  .box-outer-shadow {
+    box-shadow: 15px 0px 0px 0px rgba(0,0,0,1);
+    -webkit-box-shadow: 15px 0px 0px 0px rgba(0,0,0,1);
+    -moz-box-shadow: 15px 0px 0px 0px rgba(0,0,0,1);
   }
 
   .layout-grid {

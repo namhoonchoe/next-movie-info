@@ -29,7 +29,7 @@ export default function DiscoverPage() {
   const arr = Array.from({ length: 20 }, (_, i) => i + 1);
 
   return (
-    <div className="w-[72rem]   min-h-screen flex flex-col items-start justify-start gap-y-8 ">
+    <div className="w-[72rem]  min-h-screen flex flex-col items-start justify-start gap-y-8 ">
       <BreadCrumbs />
 
       <div className="w-full flex flex-col items-start justify-start mb-12 ">

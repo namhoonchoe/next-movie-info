@@ -19,7 +19,7 @@ const HomeBanner: React.FC<HomeBannerProps> = ({
   voteCount,
 }) => {
   return (
-    <section className="w-full h-full *:text-white  flex flex-col gap-8 relative">
+    <section className="w-full h-full *:text-white  flex flex-col gap-8 relative ">
       <header className="flex justify-start items-center">
         <h1 className="text-xl font-bold">{heading}</h1>
         <button className="btn btn-ghost text-xs">전체 목록 확인하기 </button>
