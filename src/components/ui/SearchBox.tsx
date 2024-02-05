@@ -6,7 +6,7 @@ import SearchIcon from "../svgIcons/SearchIcon";
 
 export default function SearchBox() {
   const modalRef = useRef<HTMLDialogElement>(null);
-  const inputRef = useRef(null);
+   
 
   const [keyword, setKeyword] = useState<string>("");
 

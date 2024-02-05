@@ -1,6 +1,6 @@
-import { scrollToR, scrollTol } from "@/utils/utilFunctions";
 
 import ImageCard from "@/components/ui/ImageCard";
+import ImageSlider from "@/components/ui/ImageSlider";
 import { movieApi } from "@/libs/api";
 import { useRouter } from "next/router";
 import { useRef } from "react";
@@ -117,26 +117,8 @@ export default function ContentInfoTab() {
           <p className="custom-heading m-0 ">갤러리</p>
         </div>
         <div className="w-full h-full flex items-start justify-start relative">
-          <div className="absolute flex justify-between transform -translate-y-1/2 -left-4 -right-4 top-1/2">
-            <button
-              onClick={() => {
-                scrollTol(sliderRef.current);
-                console.log(sliderRef.current);
-              }}
-              className="btn btn-sm  btn-circle shadow-sm"
-            >
-              ❮
-            </button>
-            <button
-              onClick={() => {
-                scrollToR(sliderRef.current);
-                console.log(sliderRef.current);
-              }}
-              className="btn btn-sm  btn-circle shadow-sm"
-            >
-              ❯
-            </button>
-          </div>
+          <ImageSlider targetRef={sliderRef}/>
+
           {imagesLoading ? (
             <div className="w-full h-72 skeleton "></div>
           ) : (

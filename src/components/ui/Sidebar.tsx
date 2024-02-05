@@ -1,4 +1,6 @@
+import useAuth from "@/hooks/useAuth";
 import Link from "next/link";
+import { useRouter } from "next/router";
 import DiscoverIcon from "../svgIcons/DiscoverIcon";
 import HomeIcon from "../svgIcons/HomeIcon";
 import InboxIcon from "../svgIcons/InboxIcon";
@@ -6,6 +8,8 @@ import MovieIcon from "../svgIcons/MovieIcon";
 import SeriesIcon from "../svgIcons/SeriesIcon";
 
 export default function Sidebar() {
+  const { AuthFilter } = useAuth();
+  const router = useRouter();
   return (
     <section className="flex flex-col items-center py-8 px-1.5 shrink-0 gap-4 w-56 h-[calc(100vh-56px)] shadow-[0.1px_0px_0px_1px_rgba(230,230,230,1)]  sticky top-14  grid-side-bar ">
       <Link href="/">
@@ -75,12 +79,14 @@ export default function Sidebar() {
           <p className=" subpixel-antialiased  font-medium">탐색</p>
         </div>
       </Link>
-      <Link href="/inbox">
-        <div className="nav-button w-52 gap-x-4 ">
-          <InboxIcon />
-          <p className=" subpixel-antialiased  font-medium">보관함</p>
-        </div>
-      </Link>
+
+      <div
+        className="nav-button w-52 gap-x-4 "
+        onClick={() => AuthFilter(router.push("/inbox"))}
+      >
+        <InboxIcon />
+        <p className=" subpixel-antialiased  font-medium">보관함</p>
+      </div>
     </section>
   );
 }

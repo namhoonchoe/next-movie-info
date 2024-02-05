@@ -1,6 +1,5 @@
-import { scrollToR, scrollTol } from "@/utils/utilFunctions";
-
 import ImageCard from "@/components/ui/ImageCard";
+import ImageSlider from "@/components/ui/ImageSlider";
 import { movieApi } from "@/libs/api";
 import { useRouter } from "next/router";
 import { useRef } from "react";
@@ -114,26 +113,7 @@ export default function SeriesInfoTab() {
       <div className="divider"></div>
       <p className="custom-heading">갤러리</p>
       <div className="w-full h-full flex items-start justify-start relative">
-        <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
-          <button
-            onClick={() => {
-              scrollTol(sliderRef.current);
-              console.log(sliderRef.current);
-            }}
-            className="btn btn-circle"
-          >
-            ❮
-          </button>
-          <button
-            onClick={() => {
-              scrollToR(sliderRef.current);
-              console.log(sliderRef.current);
-            }}
-            className="btn btn-circle"
-          >
-            ❯
-          </button>
-        </div>
+        <ImageSlider targetRef={sliderRef} />
         {imagesLoading ? (
           <div className="w-full h-72 skeleton "></div>
         ) : (
