@@ -6,7 +6,7 @@ export default function useAuth() {
   const { isLoggedIn, setLogIn, setLogOut } = uselogInStore();
 
   const handleLogin = () => {
-    if (!isLoggedIn) {
+    if (isLoggedIn === false) {
       setLogIn(isLoggedIn);
       router.back();
     }
@@ -14,15 +14,15 @@ export default function useAuth() {
   };
 
   const handleLogOut = () => {
-    if (isLoggedIn) {
+    if (isLoggedIn  === true) {
       setLogOut(isLoggedIn);
-      router.back();
+      router.push("/");
     }
     return;
   };
 
   const AuthFilter = (action:Promise<boolean>) => {
-    if (!isLoggedIn) {
+    if (isLoggedIn === false) {
       router.push("/login");
     }
     else{
@@ -30,5 +30,5 @@ export default function useAuth() {
     }
   };
 
-  return { handleLogin, handleLogOut, AuthFilter };
+  return { handleLogin, handleLogOut, AuthFilter, isLoggedIn };
 }

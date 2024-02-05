@@ -1,11 +1,9 @@
 import useAuth from "@/hooks/useAuth";
-import { uselogInStore } from "@/libs/store";
-
+ 
 
 export default function LoginPage() {
-  const { handleLogin, handleLogOut } = useAuth();
-  const { isLoggedIn } = uselogInStore();
-
+  const { handleLogin, handleLogOut, isLoggedIn } = useAuth();
+ 
   if(isLoggedIn) return (
     <div className="w-full h-full flex justify-center items-center">
       <form
