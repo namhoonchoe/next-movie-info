@@ -2,11 +2,10 @@ import HeroHeaderItem from "@/components/ui/HeroHeaderItem";
 import { movieApi } from "@/libs/api";
 import { getOneDecimalPlaceNumber } from "@/utils/utilFunctions";
 import { Rating } from "flowbite-react";
+import Link from "next/link";
 import { useRouter } from "next/router";
-import { useState } from "react";
 import useSWR from "swr";
-import SeriesInfoTab from "./SeriesInfoTab";
-import SimilarSeriesTab from "./SimilarSeriesTab";
+ 
 
 
 async function tmdbFetcher(url: string) {
@@ -14,11 +13,13 @@ async function tmdbFetcher(url: string) {
   return data;
 }
 
-export default function SeriesDetailPage() {
 
-  const [toggleDefault, setToggleDefault] = useState<Boolean>(true);
+type LayoutProps = {
+  outlet: React.ReactNode;
+};
 
-
+ const SeriesDetailLayout:React.FC<LayoutProps> = ({ outlet }) => {
+ 
   const {
     query: { id },
   } = useRouter();
@@ -90,21 +91,21 @@ export default function SeriesDetailPage() {
       </header>
       <main className="w-[72rem]   min-h-1/2 flex flex-col items-center justify-center gap-y-12 pt-12">
         <header className="w-64 h-12 flex items-center justify-center gap-4 rounded-lg border">
-          <div
-            className="flex items-center justify-center"
-            onClick={() => setToggleDefault(!toggleDefault)}
-          >
-            <p className="font-semibold">컨텐츠 정보</p>
-          </div>
-          <div
-            className="flex items-center justify-center"
-            onClick={() => setToggleDefault(!toggleDefault)}
-          >
-            <p className="font-semibold">비슷한 컨텐츠</p>
-          </div>
+        <Link href={`/series/${id}`}>
+            <div className="flex items-center justify-center">
+              <p className="font-semibold">컨텐츠 정보</p>
+            </div>
+          </Link>
+          <Link href={`/series/${id}/similar-content`}>
+            <div className="flex items-center justify-center">
+              <p className="font-semibold">비슷한 컨텐츠</p>
+            </div>
+          </Link>
         </header>
-        {toggleDefault ? <SeriesInfoTab /> : <SimilarSeriesTab />}
+        {outlet}
       </main>
     </div>
   );
 }
+
+export default SeriesDetailLayout;

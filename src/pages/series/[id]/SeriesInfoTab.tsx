@@ -1,3 +1,5 @@
+import SeriesDetailLayout from "@/components/layouts/SeriesDetailLayout";
+import SidebarLayout from "@/components/layouts/SidebarLayout";
 import ImageCard from "@/components/ui/ImageCard";
 import ImageSlider from "@/components/ui/ImageSlider";
 import { movieApi } from "@/libs/api";
@@ -132,3 +134,13 @@ export default function SeriesInfoTab() {
     </section>
   );
 }
+
+
+
+SeriesInfoTab.getLayout = function getLayout(page: React.ReactElement) {
+  return (
+    <SidebarLayout>
+      <SeriesDetailLayout outlet={<>{page}</>} />
+    </SidebarLayout>
+  );
+};

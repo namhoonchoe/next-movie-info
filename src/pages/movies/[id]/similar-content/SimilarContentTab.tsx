@@ -1,8 +1,11 @@
+import SidebarLayout from "@/components/layouts/SidebarLayout";
 import ImageCard from "@/components/ui/ImageCard";
 import { movieApi } from "@/libs/api";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import useSWR from "swr";
+import MovieDetailLayout from "../../../../components/layouts/MovieDetailLayout";
+
 
 const arr = Array.from({ length: 20 }, (_, i) => i + 1);
 
@@ -23,7 +26,7 @@ export default function SimilarContentTab() {
   });
 
   return (
-    <section className=" w-full flex flex-col justify-start items-start  mb-16">
+    <section className="w-full flex flex-col justify-start items-start  mb-16">
       {isLoading ? (
         <section className="w-full detail-grid justify-items-center gap-y-16 ">
           {arr.map((_, index) => (
@@ -47,3 +50,12 @@ export default function SimilarContentTab() {
     </section>
   );
 }
+
+
+SimilarContentTab.getLayout = function getLayout(page: React.ReactElement) {
+  return (
+    <SidebarLayout>
+      <MovieDetailLayout outlet={<>{page}</>} />
+    </SidebarLayout>
+  );
+};

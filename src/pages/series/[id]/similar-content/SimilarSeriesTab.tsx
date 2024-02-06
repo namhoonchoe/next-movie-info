@@ -1,3 +1,5 @@
+import SeriesDetailLayout from "@/components/layouts/SeriesDetailLayout";
+import SidebarLayout from "@/components/layouts/SidebarLayout";
 import ImageCard from "@/components/ui/ImageCard";
 import { movieApi } from "@/libs/api";
 import Link from "next/link";
@@ -47,3 +49,13 @@ export default function SimilarSeriesTab() {
   </section>
   )
 }
+
+
+
+SimilarSeriesTab.getLayout = function getLayout(page: React.ReactElement) {
+  return (
+    <SidebarLayout>
+      <SeriesDetailLayout outlet={<>{page}</>} />
+    </SidebarLayout>
+  );
+};

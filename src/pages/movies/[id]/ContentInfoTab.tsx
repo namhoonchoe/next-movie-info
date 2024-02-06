@@ -1,10 +1,11 @@
-
+import SidebarLayout from "@/components/layouts/SidebarLayout";
 import ImageCard from "@/components/ui/ImageCard";
 import ImageSlider from "@/components/ui/ImageSlider";
 import { movieApi } from "@/libs/api";
 import { useRouter } from "next/router";
 import { useRef } from "react";
 import useSWR from "swr";
+import MovieDetailLayout from "../../../components/layouts/MovieDetailLayout";
 
 async function creditFetcher(url: string) {
   const { data } = await movieApi.get(url);
@@ -117,7 +118,7 @@ export default function ContentInfoTab() {
           <p className="custom-heading m-0 ">갤러리</p>
         </div>
         <div className="w-full h-full flex items-start justify-start relative">
-          <ImageSlider targetRef={sliderRef}/>
+          <ImageSlider targetRef={sliderRef} />
 
           {imagesLoading ? (
             <div className="w-full h-72 skeleton "></div>
@@ -138,3 +139,11 @@ export default function ContentInfoTab() {
     </section>
   );
 }
+
+ContentInfoTab.getLayout = function getLayout(page: React.ReactElement) {
+  return (
+    <SidebarLayout>
+      <MovieDetailLayout outlet={<>{page}</>} />
+    </SidebarLayout>
+  );
+};

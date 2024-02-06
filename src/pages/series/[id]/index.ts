@@ -1,3 +1,3 @@
-import SeriesDetailPage from "./SeriesDetailPage";
+import SeriesInfoTab from "./SeriesInfoTab";
 
-export default SeriesDetailPage
+export default SeriesInfoTab

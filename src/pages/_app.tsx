@@ -23,9 +23,7 @@ export default function MyApp({
   return getLayout(
     <SessionProvider session={session}>
       {Component.getLayout ? (
-        <div className="fit-center">
-          <Component {...pageProps} />
-        </div>
+        <Component {...pageProps} />
       ) : (
         <SidebarLayout>
           <Component {...pageProps} />

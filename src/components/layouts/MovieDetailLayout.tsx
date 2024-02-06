@@ -6,19 +6,21 @@ import {
   runningTimeConverter,
 } from "@/utils/utilFunctions";
 import { Rating } from "flowbite-react";
+import Link from "next/link";
 import { useRouter } from "next/router";
-import { useState } from "react";
+import React from "react";
 import useSWR from "swr";
-import ContentInfoTab from "./ContentInfoTab";
-import SimilarContentTab from "./SimilarContentTab";
 
 async function tmdbFetcher(url: string) {
   const { data } = await movieApi.get(url);
   return data;
 }
 
-export default function MovieDetailPage() {
-  const [toggleDefault, setToggleDefault] = useState<Boolean>(true);
+type LayoutProps = {
+  outlet: React.ReactNode;
+};
+
+const MovieDetailLayout: React.FC<LayoutProps> = ({ outlet }) => {
   const {
     query: { id },
   } = useRouter();
@@ -79,7 +81,7 @@ export default function MovieDetailPage() {
                 {movieDetail?.genres.slice(0, 3).map((genre: any) => (
                   <p
                     key={genre.id}
-                    className="text-sm px-3 py-1 rounded-xl  border border-2"
+                    className="text-sm px-3 py-1 rounded-xl    border-2"
                   >
                     {genre.name}
                   </p>
@@ -89,23 +91,23 @@ export default function MovieDetailPage() {
           </HeroHeaderItem>
         )}
       </header>
-      <main className="w-[72rem]   min-h-1/2 flex flex-col items-center justify-center gap-y-12 pt-12 ">
+      <main className="w-[72rem] min-h-1/2 flex flex-col items-center justify-center gap-y-12 pt-12 ">
         <header className="w-64 h-12 flex items-center justify-center gap-4 rounded-lg border ">
-          <div
-            className="flex items-center justify-center"
-            onClick={() => setToggleDefault(!toggleDefault)}
-          >
-            <p className="font-semibold">컨텐츠 정보</p>
-          </div>
-          <div
-            className="flex items-center justify-center"
-            onClick={() => setToggleDefault(!toggleDefault)}
-          >
-            <p className="font-semibold">비슷한 컨텐츠</p>
-          </div>
+          <Link href={`/movies/${id}`}>
+            <div className="flex items-center justify-center">
+              <p className="font-semibold">컨텐츠 정보</p>
+            </div>
+          </Link>
+          <Link href={`/movies/${id}/similar-content`}>
+            <div className="flex items-center justify-center">
+              <p className="font-semibold">비슷한 컨텐츠</p>
+            </div>
+          </Link>
         </header>
-        {toggleDefault ? <ContentInfoTab /> : <SimilarContentTab />}
+        {outlet}
       </main>
     </div>
   );
-}
+};
+
+export default MovieDetailLayout;

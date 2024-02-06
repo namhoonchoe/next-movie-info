@@ -1,3 +1,3 @@
-import MovieDetailPage from "./MovieDetailPage";
+import ContentInfoTab from "./ContentInfoTab";
 
-export default  MovieDetailPage;
+export default  ContentInfoTab;
