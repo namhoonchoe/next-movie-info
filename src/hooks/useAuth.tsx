@@ -1,34 +1,31 @@
-import { uselogInStore } from "@/libs/store";
+import { useSession } from "next-auth/react";
 import { useRouter } from "next/router";
 
 export default function useAuth() {
   const router = useRouter();
-  const { isLoggedIn, setLogIn, setLogOut } = uselogInStore();
-
+  const { data: session } = useSession();
+  
   const handleLogin = () => {
-    if (isLoggedIn === false) {
-      setLogIn(isLoggedIn);
+    if (session) {
       router.back();
     }
     return;
   };
 
   const handleLogOut = () => {
-    if (isLoggedIn  === true) {
-      setLogOut(isLoggedIn);
+    if (session) {
       router.push("/");
     }
     return;
   };
 
-  const AuthFilter = (action:Promise<boolean>) => {
-    if (isLoggedIn === false) {
-      router.push("/login");
-    }
-    else{
+  const AuthFilter = (action: Promise<boolean>) => {
+    if (session) {
+      router.push("/signin");
+    } else {
       action;
     }
   };
 
-  return { handleLogin, handleLogOut, AuthFilter, isLoggedIn };
+  return { handleLogin, handleLogOut, AuthFilter };
 }

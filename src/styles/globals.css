@@ -4,7 +4,7 @@
 
 @layer components {
   .fit-center {
-    @apply flex flex-col m-0	justify-start items-center w-full absolute left-1/2 -translate-x-1/2 min-h-dvh;
+    @apply flex flex-col m-0 justify-start items-center w-full absolute left-1/2 -translate-x-1/2 min-h-dvh;
   }
 
   .nav-button {

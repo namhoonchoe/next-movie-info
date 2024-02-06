@@ -11,7 +11,7 @@ export default function LayoutHeader() {
         */}
         <SearchBox />
         {/**아이콘만 있는것 보다 로그인 버튼 있는게 더 나을듯! */}
-        <Link href={"/login"}>
+        <Link href={"/signin"}>
           <ProfileIcon />
         </Link>
       </section>
