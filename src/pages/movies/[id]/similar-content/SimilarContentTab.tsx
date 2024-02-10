@@ -1,11 +1,9 @@
-import SidebarLayout from "@/components/layouts/SidebarLayout";
 import ImageCard from "@/components/ui/ImageCard";
 import { movieApi } from "@/libs/api";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import useSWR from "swr";
 import MovieDetailLayout from "../../../../components/layouts/MovieDetailLayout";
-
 
 const arr = Array.from({ length: 20 }, (_, i) => i + 1);
 
@@ -51,11 +49,6 @@ export default function SimilarContentTab() {
   );
 }
 
-
 SimilarContentTab.getLayout = function getLayout(page: React.ReactElement) {
-  return (
-    <SidebarLayout>
-      <MovieDetailLayout outlet={<>{page}</>} />
-    </SidebarLayout>
-  );
+  return <MovieDetailLayout outlet={<>{page}</>} />;
 };

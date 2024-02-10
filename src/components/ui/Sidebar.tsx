@@ -1,13 +1,13 @@
- import Link from "next/link";
-import { useRouter } from "next/router";
+import useAuthFilter from "@/hooks/useAuthFilter";
+import Link from "next/link";
 import DiscoverIcon from "../svgIcons/DiscoverIcon";
 import HomeIcon from "../svgIcons/HomeIcon";
 import InboxIcon from "../svgIcons/InboxIcon";
 import MovieIcon from "../svgIcons/MovieIcon";
 import SeriesIcon from "../svgIcons/SeriesIcon";
-
+import AuthModal from "./AuthModal";
 export default function Sidebar() {
-   const router = useRouter();
+  const { AuthFilter, isModalOpen } = useAuthFilter();
   return (
     <section className="flex flex-col items-center py-8 px-1.5 shrink-0 gap-4 w-56 h-[calc(100vh-56px)] shadow-[0.1px_0px_0px_1px_rgba(230,230,230,1)]  sticky top-14  grid-side-bar ">
       <Link href="/">
@@ -80,11 +80,12 @@ export default function Sidebar() {
 
       <div
         className="nav-button w-52 gap-x-4 "
-       
+        onClick={() => AuthFilter("/inbox")}
       >
         <InboxIcon />
         <p className=" subpixel-antialiased  font-medium">보관함</p>
       </div>
+      <AuthModal isOpen={isModalOpen} />
     </section>
   );
 }

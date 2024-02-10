@@ -1,4 +1,3 @@
-import SidebarLayout from "@/components/layouts/SidebarLayout";
 import ImageCard from "@/components/ui/ImageCard";
 import ImageSlider from "@/components/ui/ImageSlider";
 import { movieApi } from "@/libs/api";
@@ -141,9 +140,5 @@ export default function ContentInfoTab() {
 }
 
 ContentInfoTab.getLayout = function getLayout(page: React.ReactElement) {
-  return (
-    <SidebarLayout>
-      <MovieDetailLayout outlet={<>{page}</>} />
-    </SidebarLayout>
-  );
+  return <MovieDetailLayout outlet={<>{page}</>} />;
 };

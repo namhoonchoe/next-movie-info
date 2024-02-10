@@ -27,9 +27,10 @@ export default function SignupPage() {
       await updateProfile((await credentials).user, {
         displayName: watch("username"),
       });
-      router.push("/");
+      router.push("/signin");
     } catch (e) {
       if (e instanceof FirebaseError) {
+        console.log(e.message)
       }
     } finally {
     }

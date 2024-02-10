@@ -1,3 +1,4 @@
+import SidebarLayout from "@/components/layouts/SidebarLayout";
 import HeroHeaderItem from "@/components/ui/HeroHeaderItem";
 import { movieApi } from "@/libs/api";
 import {
@@ -34,79 +35,85 @@ const MovieDetailLayout: React.FC<LayoutProps> = ({ outlet }) => {
   );
 
   return (
-    <div className="w-full min-h-screen flex flex-col items-center justify-start  ">
-      <header className="w-full h-[26rem]">
-        {mdLoading ? (
-          <div className="skeleton rounded-none w-full h-full" />
-        ) : (
-          <HeroHeaderItem backdropPath={movieDetail?.backdrop_path}>
-            <section className="w-full h-full flex flex-col items-start justify-between py-8 *:text-white ">
-              <div className="flex flex-col gap-8 items-start justify-start">
-                <h1 className="text-3xl font-semibold	">{movieDetail?.title}</h1>
-                <p className="italic"> {movieDetail?.tagline}</p>
-                <div className="flex justify-start items-center gap-2">
-                  <Rating className="flex items-center justify-start gap-1">
-                    <Rating.Star />
-                    <p className="text-sm font-bold text-white dark:text-white">
-                      {getOneDecimalPlaceNumber(movieDetail?.vote_average)}
-                    </p>
+    <SidebarLayout>
+      <div className="w-full min-h-screen flex flex-col items-center justify-start  ">
+        <header className="w-full h-[26rem]">
+          {mdLoading ? (
+            <div className="skeleton rounded-none w-full h-full" />
+          ) : (
+            <HeroHeaderItem backdropPath={movieDetail?.backdrop_path}>
+              <section className="w-full h-full flex flex-col items-start justify-between py-8 *:text-white ">
+                <div className="flex flex-col gap-8 items-start justify-start">
+                  <h1 className="text-3xl font-semibold	">
+                    {movieDetail?.title}
+                  </h1>
+                  <p className="italic"> {movieDetail?.tagline}</p>
+                  <div className="flex justify-start items-center gap-2">
+                    <Rating className="flex items-center justify-start gap-1">
+                      <Rating.Star />
+                      <p className="text-sm font-bold text-white dark:text-white">
+                        {getOneDecimalPlaceNumber(movieDetail?.vote_average)}
+                      </p>
 
-                    <a
-                      href="#"
-                      className="text-sm  font-semibold text-white underline "
+                      <a
+                        href="#"
+                        className="text-sm  font-semibold text-white underline "
+                      >
+                        ({movieDetail?.vote_count})
+                      </a>
+                    </Rating>
+                    <p className="text-sm  font-semibold text-white   ">
+                      {runningTimeConverter(movieDetail?.runtime)}
+                    </p>
+                    <p className="text-sm  font-semibold text-white   ">
+                      {releaseYear(movieDetail?.release_date)}
+                    </p>
+                  </div>
+                  <div className="flex justify-start items-center">
+                    {movieDetail?.overview.length > 100 ? (
+                      <p className="text-pretty">
+                        {movieDetail?.overview.slice(0, 100)} ...
+                        <p className="btn btn-sm btn-active btn-ghost">
+                          더보기
+                        </p>
+                      </p>
+                    ) : (
+                      <p>{movieDetail?.overview}</p>
+                    )}
+                  </div>
+                </div>
+
+                <div className="flex justify-start items-center gap-3">
+                  {movieDetail?.genres.slice(0, 3).map((genre: any) => (
+                    <p
+                      key={genre.id}
+                      className="text-sm px-3 py-1 rounded-xl    border-2"
                     >
-                      ({movieDetail?.vote_count})
-                    </a>
-                  </Rating>
-                  <p className="text-sm  font-semibold text-white   ">
-                    {runningTimeConverter(movieDetail?.runtime)}
-                  </p>
-                  <p className="text-sm  font-semibold text-white   ">
-                    {releaseYear(movieDetail?.release_date)}
-                  </p>
-                </div>
-                <div className="flex justify-start items-center">
-                  {movieDetail?.overview.length > 100 ? (
-                    <p className="text-pretty">
-                      {movieDetail?.overview.slice(0, 100)} ...
-                      <p className="btn btn-sm btn-active btn-ghost">더보기</p>
+                      {genre.name}
                     </p>
-                  ) : (
-                    <p>{movieDetail?.overview}</p>
-                  )}
+                  ))}
                 </div>
-              </div>
-
-              <div className="flex justify-start items-center gap-3">
-                {movieDetail?.genres.slice(0, 3).map((genre: any) => (
-                  <p
-                    key={genre.id}
-                    className="text-sm px-3 py-1 rounded-xl    border-2"
-                  >
-                    {genre.name}
-                  </p>
-                ))}
-              </div>
-            </section>
-          </HeroHeaderItem>
-        )}
-      </header>
-      <main className="w-[72rem] min-h-1/2 flex flex-col items-center justify-center gap-y-12 pt-12 ">
-        <header className="w-64 h-12 flex items-center justify-center gap-4 rounded-lg border ">
-          <Link href={`/movies/${id}`}>
-            <div className="flex items-center justify-center">
-              <p className="font-semibold">컨텐츠 정보</p>
-            </div>
-          </Link>
-          <Link href={`/movies/${id}/similar-content`}>
-            <div className="flex items-center justify-center">
-              <p className="font-semibold">비슷한 컨텐츠</p>
-            </div>
-          </Link>
+              </section>
+            </HeroHeaderItem>
+          )}
         </header>
-        {outlet}
-      </main>
-    </div>
+        <main className="w-[72rem] min-h-1/2 flex flex-col items-center justify-center gap-y-12 pt-12 ">
+          <header className="w-64 h-12 flex items-center justify-center gap-4 rounded-lg border ">
+            <Link href={`/movies/${id}`}>
+              <div className="flex items-center justify-center">
+                <p className="font-semibold">컨텐츠 정보</p>
+              </div>
+            </Link>
+            <Link href={`/movies/${id}/similar-content`}>
+              <div className="flex items-center justify-center">
+                <p className="font-semibold">비슷한 컨텐츠</p>
+              </div>
+            </Link>
+          </header>
+          {outlet}
+        </main>
+      </div>
+    </SidebarLayout>
   );
 };
 
