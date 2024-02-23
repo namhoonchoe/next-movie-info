@@ -19,18 +19,12 @@ export default function SearchResultsPage() {
 
   const { data: movieData, isLoading: isMovieLoading } = useSWR(
     `/search/movie?query=${query}`,
-    tmdbFetcher,
-    {
-      revalidateOnFocus: false,
-    }
+    tmdbFetcher
   );
 
   const { data: seriesData, isLoading: isSeriesLoading } = useSWR(
     `/search/tv?query=${query}`,
-    tmdbFetcher,
-    {
-      revalidateOnFocus: false,
-    }
+    tmdbFetcher
   );
 
   return (

@@ -5,8 +5,7 @@ import SearchBox from "./SearchBox";
 
 export default function LayoutHeader() {
   const { status } = useSession();
-  console.log(status);
-  return (
+   return (
     <header className="w-full h-14 px-6 py-2 bg-white shadow-[-1px_0px_0_1px_rgba(230,230,230,1)] justify-between items-center inline-flex sticky top-0 z-[999] grid-header  ">
       <p className="text-black text-xl font-bold font-['Inter']">로고</p>
       <section className="h-10 px-2 justify-between items-center flex gap-4">
@@ -23,13 +22,13 @@ export default function LayoutHeader() {
         ) : (
           <div className="flex justify-start items-center gap-2 ">
             <Link href={"/signin"}>
-              <button className="btn btn-sm btn-primary">
+              <button className="btn btn-sm btn-ghost border border-slate-200 ">
                 <p className="text-sm"> 로그인</p>
               </button>
             </Link>
             <Link href={"/signup"}>
-              <button className="btn btn-sm btn-accent">
-                <p className="text-sm"> 회원가입</p>
+              <button className="btn btn-sm bg-emerald-500 hover:bg-teal-400">
+                <p className="text-sm text-white"> 회원가입</p>
               </button>
             </Link>
           </div>

@@ -12,19 +12,15 @@ export default function DiscoverPage() {
 
   const {
     data: movieData,
-    error: movieError,
+     
     isLoading: movieLoading,
-  } = useSWR("/genre/movie/list", tmdbFetcher, {
-    revalidateOnFocus: false,
-  });
+  } = useSWR("/genre/movie/list", tmdbFetcher );
 
   const {
     data: tvData,
-    error: tvError,
+    
     isLoading: tvLoading,
-  } = useSWR("/genre/tv/list", tmdbFetcher, {
-    revalidateOnFocus: false,
-  });
+  } = useSWR("/genre/tv/list", tmdbFetcher);
 
   const arr = Array.from({ length: 20 }, (_, i) => i + 1);
 
@@ -62,7 +58,7 @@ export default function DiscoverPage() {
                         : movieBackgrounds[index]
                     }
                   ></div>
-                  <p className="text-white font-semibold text-sm	 ">
+                  <p className="text-white font-semibold text-sm">
                     {genre.name}
                   </p>
                 </div>

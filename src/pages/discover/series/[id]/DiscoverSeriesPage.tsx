@@ -17,16 +17,9 @@ export default function DiscoverSeriesPage() {
     query: { id },
   } = useRouter();
 
-  
-  const queryParams =`?include_adult=false&include_video=false&sort_by=popularity.desc&with_genres=${id}`;
+  const queryParams = `?include_adult=false&include_video=false&sort_by=popularity.desc&with_genres=${id}`;
 
-  const { data, error, isLoading } = useSWR(
-    `/discover/tv${queryParams}`,
-    tmdbFetcher,
-    {
-      revalidateOnFocus: false,
-    }
-  );
+  const { data, isLoading } = useSWR(`/discover/tv${queryParams}`, tmdbFetcher);
 
   return (
     <DiscoverLayout isLoading={isLoading} pageTitle={"장르로 찾아보기 "}>
@@ -38,5 +31,5 @@ export default function DiscoverSeriesPage() {
         </Link>
       ))}
     </DiscoverLayout>
-  )
+  );
 }

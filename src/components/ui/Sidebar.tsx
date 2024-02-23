@@ -6,10 +6,12 @@ import InboxIcon from "../svgIcons/InboxIcon";
 import MovieIcon from "../svgIcons/MovieIcon";
 import SeriesIcon from "../svgIcons/SeriesIcon";
 import AuthModal from "./AuthModal";
+
 export default function Sidebar() {
   const { AuthFilter, isModalOpen } = useAuthFilter();
+
   return (
-    <section className="flex flex-col items-center py-8 px-1.5 shrink-0 gap-4 w-56 h-[calc(100vh-56px)] shadow-[0.1px_0px_0px_1px_rgba(230,230,230,1)]  sticky top-14  grid-side-bar ">
+    <section className="flex flex-col items-start  py-8 px-1 shrink-0 gap-4 shadow-[0.1px_0px_0px_1px_rgba(230,230,230,1)] sticky top-14 grid-side-bar w-56 h-[calc(100vh-56px)] bg-white ">
       <Link href="/">
         <div className="nav-button w-52 gap-x-4 ">
           <HomeIcon />
@@ -19,21 +21,21 @@ export default function Sidebar() {
 
       <details className="w-52  collapse collapse-arrow open:border">
         <summary className="collapse-title w-full pl-3 ">
-          <div className=" text-sm font-medium flex items-center gap-x-4   ">
+          <div className=" text-sm font-medium flex items-center gap-x-4 w-full  ">
             <MovieIcon />
             <p className=" subpixel-antialiased  font-medium">영화</p>
           </div>
         </summary>
 
-        <section className="collapse-content flex flex-col justify-start items-start gap-y-3 ">
+        <section className="collapse-content flex flex-col justify-start items-start gap-y-3 w-full ">
           <Link href="/movies/now-playing" className="w-full">
             <div className="nav-button">
-              <p className=" subpixel-antialiased   ">현재 상영중</p>
+              <p className=" subpixel-antialiased ">현재 상영중</p>
             </div>
           </Link>
           <Link href="/movies/popular" className="w-full">
             <div className="nav-button">
-              <p className=" subpixel-antialiased   ">인기</p>
+              <p className=" subpixel-antialiased ">인기</p>
             </div>
           </Link>
           <Link href="/movies/top-rated" className="w-full">
@@ -46,9 +48,9 @@ export default function Sidebar() {
 
       <details className="w-52  collapse collapse-arrow open:border  ">
         <summary className="collapse-title w-full  pl-3 ">
-          <div className=" text-sm font-medium flex items-center gap-x-4 ">
+          <div className=" text-sm font-medium flex items-center gap-x-4  ">
             <SeriesIcon />
-            <p className=" subpixel-antialiased   ">시리즈</p>
+            <p className="subpixel-antialiased">시리즈</p>
           </div>
         </summary>
 

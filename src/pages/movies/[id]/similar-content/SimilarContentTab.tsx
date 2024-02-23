@@ -19,9 +19,7 @@ export default function SimilarContentTab() {
     query: { id },
   } = useRouter();
 
-  const { data, isLoading } = useSWR(`/movie/${id}/similar`, tmdbFetcher, {
-    revalidateOnFocus: false,
-  });
+  const { data, isLoading } = useSWR(`/movie/${id}/similar`, tmdbFetcher );
 
   return (
     <section className="w-full flex flex-col justify-start items-start  mb-16">

@@ -26,18 +26,12 @@ export default function ContentInfoTab() {
 
   const { data: creditInfo, isLoading: creditsLoading } = useSWR(
     `/movie/${id}/credits`,
-    creditFetcher,
-    {
-      revalidateOnFocus: false,
-    }
+    creditFetcher 
   );
 
   const { data: images, isLoading: imagesLoading } = useSWR(
     `/movie/${id}/images`,
-    gallaryFetcher,
-    {
-      revalidateOnFocus: false,
-    }
+    gallaryFetcher 
   );
 
   const arr = Array.from({ length: 7 }, (_, i) => i + 1);

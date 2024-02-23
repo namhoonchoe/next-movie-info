@@ -20,25 +20,19 @@ async function tmdbFetcher(url: string) {
 const HomePage: React.FC = () => {
   const {
     data: tmData,
-    error: tmError,
+
     isLoading: tmLoading,
-  } = useSWR<Array<TrendingMovie>>("/trending/movie/week", tmdbFetcher, {
-    revalidateOnFocus: false,
-  });
+  } = useSWR<Array<TrendingMovie>>("/trending/movie/week", tmdbFetcher);
   const {
     data: tsData,
-    error: tsError,
+
     isLoading: tsLoading,
-  } = useSWR<Array<TrendingSeries>>("/trending/tv/week", tmdbFetcher, {
-    revalidateOnFocus: false,
-  });
+  } = useSWR<Array<TrendingSeries>>("/trending/tv/week", tmdbFetcher);
   const {
     data: umData,
-    error: umError,
+
     isLoading: umLoading,
-  } = useSWR<Array<MovieResult>>("/movie/upcoming", tmdbFetcher, {
-    revalidateOnFocus: false,
-  });
+  } = useSWR<Array<MovieResult>>("/movie/upcoming", tmdbFetcher);
 
   return (
     <div className="w-full min-h-screen flex flex-col items-center justify-start">

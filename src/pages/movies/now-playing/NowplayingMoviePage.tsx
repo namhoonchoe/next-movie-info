@@ -12,9 +12,7 @@ async function tmdbFetcher(url: string) {
 }
 
 export default function NowplayingMoviePage() {
-  const { data, error, isLoading } = useSWR("/movie/now_playing", tmdbFetcher, {
-    revalidateOnFocus: false,
-  });
+  const { data,  isLoading } = useSWR("/movie/now_playing", tmdbFetcher);
   return (
     <SubPagelayout isLoading={isLoading} pageTitle={"현재 상영중인 영화"}>
       {data?.map((movie: any) => (

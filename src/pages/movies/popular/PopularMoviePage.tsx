@@ -12,9 +12,7 @@ async function tmdbFetcher(url: string) {
 }
 
 export default function PopularMoviePage() {
-  const { data, error, isLoading } = useSWR("/movie/popular", tmdbFetcher, {
-    revalidateOnFocus: false,
-  });
+  const { data,  isLoading } = useSWR("/movie/popular", tmdbFetcher);
   return (
     <SubPagelayout isLoading={isLoading} pageTitle={"인기 있는 영화"}>
       {data?.map((movie: any) => (

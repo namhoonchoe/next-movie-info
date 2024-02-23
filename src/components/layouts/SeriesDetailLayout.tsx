@@ -23,7 +23,7 @@ const SeriesDetailLayout: React.FC<LayoutProps> = ({ outlet }) => {
 
   const {
     data: seriesDetail,
-    error,
+     
     isLoading,
   } = useSWR(`/tv/${id}`, tmdbFetcher, {
     revalidateOnFocus: false,
@@ -34,7 +34,7 @@ const SeriesDetailLayout: React.FC<LayoutProps> = ({ outlet }) => {
       <div className="w-full min-h-screen flex flex-col items-center justify-start">
         <header className="w-full h-[26rem]">
           {isLoading ? (
-            <div className="skeleton w-full h-full" />
+            <div className="skeleton rounded-none w-full h-full" />
           ) : (
             <HeroHeaderItem backdropPath={seriesDetail?.backdrop_path}>
               <section className="w-full h-full flex flex-col items-start justify-between py-8 *:text-white ">

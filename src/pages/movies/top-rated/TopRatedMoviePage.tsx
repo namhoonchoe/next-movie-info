@@ -12,9 +12,7 @@ async function tmdbFetcher(url: string) {
 }
 
 export default function TopRatedMoviePage() {
-  const { data, error, isLoading } = useSWR("/movie/top_rated", tmdbFetcher, {
-    revalidateOnFocus: false,
-  });
+  const { data,   isLoading } = useSWR("/movie/top_rated", tmdbFetcher);
   return (
     <SubPagelayout isLoading={isLoading} pageTitle={"높은 평점"}>
       {data?.map((movie: any) => (

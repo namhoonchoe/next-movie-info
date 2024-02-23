@@ -20,7 +20,7 @@ const HeroHeaderItem: React.FC<HeroHeaderProps> = ({
         </section>
         {backdropPath && (
           <div
-            className="bg-left-top bg-cover w-1/2 h-full   brightness-75 box-inner-shadow"
+            className="bg-left-top bg-cover w-1/2 h-full brightness-75 box-inner-shadow"
             style={{
               backgroundImage: `url(${fullSizeUrl}${backdropPath})`,
             }}

@@ -13,9 +13,7 @@ async function tmdbFetcher(url: string) {
 }
 
 export default function AiringTodayPage() {
-  const { data, error, isLoading } = useSWR("/tv/airing_today", tmdbFetcher, {
-    revalidateOnFocus: false,
-  });
+  const { data,  isLoading } = useSWR("/tv/airing_today", tmdbFetcher );
   return (
     <SubPagelayout isLoading={isLoading} pageTitle={"오늘 방영중인 프로그램"}>
       {data?.map((movie: any) => (

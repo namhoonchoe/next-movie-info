@@ -26,18 +26,12 @@ export default function SeriesInfoTab() {
 
   const { data: creditInfo, isLoading: creditsLoading } = useSWR(
     `/tv/${id}/credits`,
-    creditFetcher,
-    {
-      revalidateOnFocus: false,
-    }
+    creditFetcher
   );
 
   const { data: images, isLoading: imagesLoading } = useSWR(
     `/tv/${id}/images`,
-    gallaryFetcher,
-    {
-      revalidateOnFocus: false,
-    }
+    gallaryFetcher
   );
 
   const arr = Array.from({ length: 7 }, (_, i) => i + 1);

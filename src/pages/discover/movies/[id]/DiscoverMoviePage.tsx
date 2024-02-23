@@ -19,12 +19,9 @@ export default function DiscoverMoviePage() {
 
   const queryParams =`?include_adult=false&include_video=false&sort_by=popularity.desc&with_genres=${id}`;
 
-  const { data, error, isLoading } = useSWR(
+  const { data,   isLoading } = useSWR(
     `/discover/movie${queryParams}`,
-    tmdbFetcher,
-    {
-      revalidateOnFocus: false,
-    }
+    tmdbFetcher 
   );
 
   return (

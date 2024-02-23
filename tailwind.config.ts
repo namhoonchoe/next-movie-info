@@ -14,10 +14,24 @@ const config: Config = {
         "gradient-conic":
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
       },
+      screens:{
+        'xl': '1440px',
+        // => @media (min-width: 1440px) { ... }
+      }
     },
     daisyui: {
       themes: ["light", "wireframe"],
     },
+    screens: {
+      'sm': '600px',
+      // => @media (min-width: '600px) { ... }
+
+      'md': '905px',
+      // => @media (min-width: 905px) { ... }
+
+      'lg': '1240px',
+      // => @media (min-width: 1240px) { ... }
+    } 
   },
   plugins: [
     require("daisyui"),

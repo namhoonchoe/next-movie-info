@@ -12,9 +12,7 @@ async function tmdbFetcher(url: string) {
 }
 
 export default function PopularSeriesPage() {
-  const { data, error, isLoading } = useSWR("/tv/popular", tmdbFetcher, {
-    revalidateOnFocus: false,
-  });
+  const { data,  isLoading } = useSWR("/tv/popular", tmdbFetcher );
   return (
     <SubPagelayout isLoading={isLoading} pageTitle={"인기있는 프로그램"}>
       {data?.map((movie: any) => (
