@@ -7,14 +7,13 @@ export default function useAuthFilter() {
   const { data: session } = useSession();
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
 
-  const AuthFilter = (navigateTo:string) => {
-    if (session) {
-      setIsModalOpen(false)
-      router.push(`${navigateTo}`)
+  const AuthFilter = (navigateTo: string) => {
+      if (session) {
+      router.push(`${navigateTo}`);
     } else {
-      setIsModalOpen(true)
-     }
+      setIsModalOpen(true);
+    }
   };
 
-  return { AuthFilter, isModalOpen };
+  return { AuthFilter, isModalOpen, setIsModalOpen };
 }

@@ -41,7 +41,7 @@ const HomePage: React.FC = () => {
         <Carousel
           slide={false}
           className="*:rounded-none"
-          leftControl={<p className="text-white  text-lg">❮</p>}
+          leftControl={<p className="text-white  text-lg  ">❮</p>}
           rightControl={<p className="text-white  text-lg">❯</p>}
         >
           <>
@@ -103,7 +103,7 @@ const HomePage: React.FC = () => {
       <main className="w-[72rem] flex flex-col items-start justify-center gap-16 my-12">
         <section className="flex flex-col justify-center items-start w-full">
           <p className="custom-heading">지금 뜨는 영화</p>
-          <div className="w-full h-80">
+          <div className="w-full h-[260.74px] ">
             {tmData && (
               <CarouselSlider
                 dataList={tmData}
@@ -115,7 +115,7 @@ const HomePage: React.FC = () => {
         </section>
         <section className="flex flex-col justify-center items-start w-full">
           <p className="custom-heading">지금 뜨는 시리즈</p>
-          <div className="w-full h-80  ">
+          <div className="w-full h-[260.74px]  ">
             {tsData && (
               <CarouselSlider
                 dataList={tsData}
@@ -127,7 +127,7 @@ const HomePage: React.FC = () => {
         </section>
         <section className="flex flex-col justify-center items-start w-full">
           <p className="custom-heading">개봉예정 영화</p>
-          <div className="w-full h-80  ">
+          <div className="w-full h-[260.74px]  ">
             {umData && (
               <CarouselSlider
                 dataList={umData}

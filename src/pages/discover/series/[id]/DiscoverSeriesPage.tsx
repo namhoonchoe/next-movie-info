@@ -25,7 +25,7 @@ export default function DiscoverSeriesPage() {
     <DiscoverLayout isLoading={isLoading} pageTitle={"장르로 찾아보기 "}>
       {data?.map((series: any) => (
         <Link href={`/series/${series.id}`} key={series.id}>
-          <div className="w-44 aspect-[27/40] rounded-md overflow-hidden hover:brightness-75 bg-slate-200">
+          <div className="w-44 aspect-[27/40] rounded-md overflow-hidden hover:brightness-75 fade-animation bg-slate-200">
             <ImageCard imageUrl={series.poster_path} title={series.title} />
           </div>
         </Link>

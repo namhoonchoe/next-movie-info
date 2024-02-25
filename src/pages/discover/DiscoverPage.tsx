@@ -49,7 +49,7 @@ export default function DiscoverPage() {
                 }}
                 key={genre.id}
               >
-                <div className="w-44 aspect-[15/8] rounded-xl p-3 border relative  hover:brightness-50 overflow-hidden">
+                <div className="w-44 aspect-[15/8] rounded-xl p-3 border relative  hover:brightness-50 fade-animation overflow-hidden">
                   <div
                     className="w-full h-full absolute top-0 left-0 -z-10"
                     style={
@@ -86,7 +86,7 @@ export default function DiscoverPage() {
                 href={{ pathname:`/discover/series/${genre.id}` }}
                 key={genre.id}
               >
-                <div className="w-44 aspect-[15/8] rounded-xl p-3 border relative  hover:brightness-50 overflow-hidden">
+                <div className="w-44 aspect-[15/8] rounded-xl p-3 border relative  hover:brightness-50 fade-animation overflow-hidden">
                   <div
                     className="w-full h-full absolute top-0 left-0 -z-10"
                     style={

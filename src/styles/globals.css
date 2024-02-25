@@ -24,11 +24,15 @@
   }
 
   .poster-container {
-    @apply w-44 aspect-[27/40] rounded-md overflow-hidden shadow-sm hover:brightness-75 bg-slate-200;
+    @apply w-44 aspect-[27/40] rounded-md overflow-hidden shadow-sm hover:brightness-75 bg-slate-200 fade-animation;
   }
 
   .squared-skeleton {
     @apply skeleton rounded-none;
+  }
+
+  .fade-animation {
+    @apply transition duration-300 ease-in-out
   }
 }
 
@@ -95,6 +99,16 @@
   }
 
   .gallary-slider::-webkit-scrollbar {
+    display: none;
+  }
+
+  .hide-scroll {
+    scroll-behavior: smooth;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  
+  .hide-scroll::-webkit-scrollbar {
     display: none;
   }
 }

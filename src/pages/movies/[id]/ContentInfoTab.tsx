@@ -64,7 +64,7 @@ export default function ContentInfoTab() {
           </div>
         ) : (
           <div className="w-full credit-grid gap-8">
-            <div className="w-80 aspect-[4] rounded-md flex items-center justify-start gap-2 px-2 py-1 hover:bg-slate-200">
+            <div className="w-80 aspect-[4] rounded-md flex items-center justify-start gap-2 px-2 py-1 hover:bg-slate-200 fade-animation">
               <div className="avatar">
                 <div className="w-16 rounded-full">
                   <ImageCard
@@ -84,7 +84,7 @@ export default function ContentInfoTab() {
             {actors?.slice(0, 10).map((cast: any) => (
               <div
                 key={cast.id}
-                className="w-80 aspect-[4] rounded-md flex items-center justify-start gap-2 px-2 py-1 hover:bg-slate-200"
+                className="w-80 aspect-[4] rounded-md flex items-center justify-start gap-2 px-2 py-1 fade-animation hover:bg-slate-200"
               >
                 <div className="avatar">
                   <div className="w-16 rounded-full">

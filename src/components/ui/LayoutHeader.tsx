@@ -5,20 +5,28 @@ import SearchBox from "./SearchBox";
 
 export default function LayoutHeader() {
   const { status } = useSession();
-   return (
+  return (
     <header className="w-full h-14 px-6 py-2 bg-white shadow-[-1px_0px_0_1px_rgba(230,230,230,1)] justify-between items-center inline-flex sticky top-0 z-[999] grid-header  ">
-      <p className="text-black text-xl font-bold font-['Inter']">로고</p>
+      <Link href={"/"}>
+        <p className="text-black text-xl font-bold font-['Inter']">로고</p>
+      </Link>
       <section className="h-10 px-2 justify-between items-center flex gap-4">
         <SearchBox />
 
         {status === "authenticated" ? (
           <details className="dropdown dropdown-bottom dropdown-end">
-          <summary className="m-1 btn btn-circle"> <ProfileIcon /></summary>
-          <ul className="p-2 shadow menu dropdown-content z-[1] bg-base-100 rounded-box w-52">
-            <li onClick={() => signOut({callbackUrl:"/"})}><a>로그아웃</a></li>
-            <li><a>Item 2</a></li>
-          </ul>
-        </details>
+            <summary className="m-1 btn btn-circle">
+              <ProfileIcon />
+            </summary>
+            <ul className="p-2 shadow menu dropdown-content z-[1] bg-base-100 rounded-box w-52">
+              <li onClick={() => signOut({ callbackUrl: "/" })}>
+                <a>로그아웃</a>
+              </li>
+              <li>
+                <a>Item 2</a>
+              </li>
+            </ul>
+          </details>
         ) : (
           <div className="flex justify-start items-center gap-2 ">
             <Link href={"/signin"}>

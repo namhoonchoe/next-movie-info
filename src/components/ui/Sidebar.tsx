@@ -8,10 +8,10 @@ import SeriesIcon from "../svgIcons/SeriesIcon";
 import AuthModal from "./AuthModal";
 
 export default function Sidebar() {
-  const { AuthFilter, isModalOpen } = useAuthFilter();
+  const { AuthFilter, isModalOpen, setIsModalOpen } = useAuthFilter();
 
   return (
-    <section className="flex flex-col items-start  py-8 px-1 shrink-0 gap-4 shadow-[0.1px_0px_0px_1px_rgba(230,230,230,1)] sticky top-14 grid-side-bar w-56 h-[calc(100vh-56px)] bg-white ">
+    <section className="flex flex-col items-start  py-8 px-1 shrink-0 gap-4 shadow-[0.1px_0px_0px_1px_rgba(230,230,230,1)] sticky top-14 grid-side-bar w-56 min-h-[calc(100vh-56px)] xl:h-[calc(100vh-56px)]  bg-white ">
       <Link href="/">
         <div className="nav-button w-52 gap-x-4 ">
           <HomeIcon />
@@ -27,7 +27,7 @@ export default function Sidebar() {
           </div>
         </summary>
 
-        <section className="collapse-content flex flex-col justify-start items-start gap-y-3 w-full ">
+        <section className="collapse-content flex flex-col justify-start items-start gap-y-3 w-full  ">
           <Link href="/movies/now-playing" className="w-full">
             <div className="nav-button">
               <p className=" subpixel-antialiased ">현재 상영중</p>
@@ -87,7 +87,7 @@ export default function Sidebar() {
         <InboxIcon />
         <p className=" subpixel-antialiased  font-medium">보관함</p>
       </div>
-      <AuthModal isOpen={isModalOpen} />
+      <AuthModal isOpen={isModalOpen} closeModal={() => setIsModalOpen(false)} />
     </section>
   );
 }
